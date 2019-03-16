@@ -5,3 +5,16 @@ type User {
   email: String!
   phone: String!
 }
+
+type Project {
+  id: ID! @unique
+  title: String!
+  description: String!
+  longDescription: String!
+  image: String
+  largeImage: String
+  amount: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  # user: User!
+}
