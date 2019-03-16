@@ -1,20 +1,57 @@
 type User {
   id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
   firstName: String!
   lastName: String!
-  email: String!
+  email: String! @unique
+  password: String!
   phone: String!
+  isAdmin: Boolean! @default(value: "false")
+  # profilePicture: Picture
 }
 
 type Project {
   id: ID! @unique
   title: String!
+  shortDescription: String!
   description: String!
-  longDescription: String!
+  slug: String!
   image: String
   largeImage: String
   amount: Int!
+  # owner: User!
+  # reviews: [Review!]!
+  # views: Views!
+  # policies: Policies
   createdAt: DateTime!
   updatedAt: DateTime!
-  # user: User!
+  # supporters: [Supporter!]!
+  # pictures: [Picture!]!
+  # popularity: Int
+}
+
+type Categories {
+  id: ID! @unique
+  title: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Picture {
+  id: ID! @unique
+  url: String!
+}
+
+type Location {
+  id: ID! @unique
+  lat: Float!
+  lng: Float!
+  # neighbourHood: Neighbourhood
+  # user: User
+  place: Project
+  address: String!
+  directions: String!
+  # experience: Experience
+  # restaurant: Restaurant
 }

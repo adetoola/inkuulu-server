@@ -3,9 +3,9 @@
 type Mutation {
   createProject(
     title: String
+    shortDescription: String
     description: String
-    longDescription: String
-    price: Int
+    amount: Int
     image: String
     largeImage: String
   ): Project!
