@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/adetola-onasanya-5a4cc0/inkuulu-backend/dev
-# timestamp: Sat Mar 16 2019 11:37:43 GMT+0100 (West Africa Standard Time)
+# timestamp: Mon Mar 18 2019 17:27:24 GMT+0100 (West Africa Standard Time)
 
 type AggregateCategories {
   count: Int!
@@ -815,8 +815,8 @@ type Project implements Node {
   shortDescription: String!
   description: String!
   slug: String!
-  image: String
-  largeImage: String
+  thumbnail: String
+  cover: String
   amount: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -837,8 +837,8 @@ input ProjectCreateInput {
   shortDescription: String!
   description: String!
   slug: String!
-  image: String
-  largeImage: String
+  thumbnail: String
+  cover: String
   amount: Int!
 }
 
@@ -867,10 +867,10 @@ enum ProjectOrderByInput {
   description_DESC
   slug_ASC
   slug_DESC
-  image_ASC
-  image_DESC
-  largeImage_ASC
-  largeImage_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  cover_ASC
+  cover_DESC
   amount_ASC
   amount_DESC
   createdAt_ASC
@@ -885,8 +885,8 @@ type ProjectPreviousValues {
   shortDescription: String!
   description: String!
   slug: String!
-  image: String
-  largeImage: String
+  thumbnail: String
+  cover: String
   amount: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -936,8 +936,8 @@ input ProjectUpdateDataInput {
   shortDescription: String
   description: String
   slug: String
-  image: String
-  largeImage: String
+  thumbnail: String
+  cover: String
   amount: Int
 }
 
@@ -946,8 +946,8 @@ input ProjectUpdateInput {
   shortDescription: String
   description: String
   slug: String
-  image: String
-  largeImage: String
+  thumbnail: String
+  cover: String
   amount: Int
 }
 
@@ -956,8 +956,8 @@ input ProjectUpdateManyMutationInput {
   shortDescription: String
   description: String
   slug: String
-  image: String
-  largeImage: String
+  thumbnail: String
+  cover: String
   amount: Int
 }
 
@@ -1184,86 +1184,86 @@ input ProjectWhereInput {
 
   """All values not ending with the given string."""
   slug_not_ends_with: String
-  image: String
+  thumbnail: String
 
   """All values that are not equal to given value."""
-  image_not: String
+  thumbnail_not: String
 
   """All values that are contained in given list."""
-  image_in: [String!]
+  thumbnail_in: [String!]
 
   """All values that are not contained in given list."""
-  image_not_in: [String!]
+  thumbnail_not_in: [String!]
 
   """All values less than the given value."""
-  image_lt: String
+  thumbnail_lt: String
 
   """All values less than or equal the given value."""
-  image_lte: String
+  thumbnail_lte: String
 
   """All values greater than the given value."""
-  image_gt: String
+  thumbnail_gt: String
 
   """All values greater than or equal the given value."""
-  image_gte: String
+  thumbnail_gte: String
 
   """All values containing the given string."""
-  image_contains: String
+  thumbnail_contains: String
 
   """All values not containing the given string."""
-  image_not_contains: String
+  thumbnail_not_contains: String
 
   """All values starting with the given string."""
-  image_starts_with: String
+  thumbnail_starts_with: String
 
   """All values not starting with the given string."""
-  image_not_starts_with: String
+  thumbnail_not_starts_with: String
 
   """All values ending with the given string."""
-  image_ends_with: String
+  thumbnail_ends_with: String
 
   """All values not ending with the given string."""
-  image_not_ends_with: String
-  largeImage: String
+  thumbnail_not_ends_with: String
+  cover: String
 
   """All values that are not equal to given value."""
-  largeImage_not: String
+  cover_not: String
 
   """All values that are contained in given list."""
-  largeImage_in: [String!]
+  cover_in: [String!]
 
   """All values that are not contained in given list."""
-  largeImage_not_in: [String!]
+  cover_not_in: [String!]
 
   """All values less than the given value."""
-  largeImage_lt: String
+  cover_lt: String
 
   """All values less than or equal the given value."""
-  largeImage_lte: String
+  cover_lte: String
 
   """All values greater than the given value."""
-  largeImage_gt: String
+  cover_gt: String
 
   """All values greater than or equal the given value."""
-  largeImage_gte: String
+  cover_gte: String
 
   """All values containing the given string."""
-  largeImage_contains: String
+  cover_contains: String
 
   """All values not containing the given string."""
-  largeImage_not_contains: String
+  cover_not_contains: String
 
   """All values starting with the given string."""
-  largeImage_starts_with: String
+  cover_starts_with: String
 
   """All values not starting with the given string."""
-  largeImage_not_starts_with: String
+  cover_not_starts_with: String
 
   """All values ending with the given string."""
-  largeImage_ends_with: String
+  cover_ends_with: String
 
   """All values not ending with the given string."""
-  largeImage_not_ends_with: String
+  cover_not_ends_with: String
   amount: Int
 
   """All values that are not equal to given value."""
@@ -1334,6 +1334,7 @@ input ProjectWhereInput {
 
 input ProjectWhereUniqueInput {
   id: ID
+  slug: String
 }
 
 type Query {

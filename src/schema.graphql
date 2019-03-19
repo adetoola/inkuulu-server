@@ -6,11 +6,14 @@ type Mutation {
     shortDescription: String
     description: String
     amount: Int
-    image: String
-    largeImage: String
+    cover: String
+    thumbnail: String
   ): Project!
+
+  updateProject(title: String, shortDescription: String, description: String, amount: Int): Project!
 }
 
 type Query {
   projects: [Project]!
+  project(where: ProjectWhereUniqueInput!): Project
 }

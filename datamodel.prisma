@@ -16,9 +16,9 @@ type Project {
   title: String!
   shortDescription: String!
   description: String!
-  slug: String!
-  image: String
-  largeImage: String
+  slug: String! @unique
+  thumbnail: String
+  cover: String
   amount: Int!
   # owner: User!
   # reviews: [Review!]!

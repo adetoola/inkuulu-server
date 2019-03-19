@@ -4,9 +4,9 @@ const Mutations = {
   async createProject(parent, args, ctx, info) {
     // TODO: Check if they are logged in
     // Create slug
-    args.slug = slugify(args.name);
+    args.slug = slugify(args.title);
 
-    const project = await ctx.db.mutation.createProject(
+    return ctx.db.mutation.createProject(
       {
         data: {
           ...args
@@ -14,8 +14,23 @@ const Mutations = {
       },
       info
     );
+  },
 
-    return project;
+  async updateProject(parent, args, ctx, info) {
+    // first take a copy of the updates
+    const updates = { ...args };
+    //remove the ID from the updates
+    delete updates.id;
+    // run the update method
+    return ctx.db.mutation.updateProject(
+      {
+        data: updates,
+        where: {
+          id: args.id
+        }
+      },
+      info
+    );
   }
 
   // async createCategory(parent, args, ctx, info) {
