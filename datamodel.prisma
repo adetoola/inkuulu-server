@@ -1,3 +1,12 @@
+enum Permission {
+  ADMIN
+  USER
+  PROJECREATE
+  PROJECTUPDATE
+  PROJECTDELETE
+  PERMISSIONUPDATE
+}
+
 type User {
   id: ID! @unique
   createdAt: DateTime!
@@ -8,6 +17,9 @@ type User {
   password: String!
   phone: String!
   isAdmin: Boolean! @default(value: "false")
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: [Permission]
   # profilePicture: Picture
 }
 

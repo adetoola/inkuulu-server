@@ -1,4 +1,6 @@
 const slugify = require("@sindresorhus/slugify");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const Mutations = {
   async createProject(parent, args, ctx, info) {
@@ -46,6 +48,20 @@ const Mutations = {
       },
       info
     );
+  },
+  async signup(parent, args, ctx, info) {
+    args.email = args.email.toLowerCase();
+    const password = await bcrypt.hash(args.password, 10);
+    const user = ctx.db.mutation.createUser({ data: { ...args, password, permissions: { set: ["USER"] } } }, info);
+    // return the JWT Token
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    // set jwt as cookie on response
+    ctx.response.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 180 // 6 months
+    });
+
+    return user;
   }
 };
 

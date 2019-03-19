@@ -1,6 +1,8 @@
 # import * from './generated/prisma.graphql'
 
 type Mutation {
+  signup(firstName: String!, lastName: String!, email: String!, password: String!, phone: String!): User!
+
   createProject(
     title: String
     shortDescription: String
@@ -9,10 +11,9 @@ type Mutation {
     cover: String
     thumbnail: String
   ): Project!
+  updateProject(title: String, shortDescription: String, description: String, amount: Int): Project!
 
   createCategory(title: String, description: String, code: String): Category!
-
-  updateProject(title: String, shortDescription: String, description: String, amount: Int): Project!
 }
 
 type Query {
