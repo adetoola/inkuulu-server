@@ -31,25 +31,22 @@ const Mutations = {
       },
       info
     );
+  },
+
+  async createCategory(parent, args, ctx, info) {
+    // TODO: Check if they are logged in
+    // TODO: Check if the logged in user has permission to create categories
+    // Create slug
+    args.slug = slugify(args.title);
+    return ctx.db.mutation.createCategory(
+      {
+        data: {
+          ...args
+        }
+      },
+      info
+    );
   }
-
-  // async createCategory(parent, args, ctx, info) {
-  //   // TODO: Check if they are logged in
-  //   // TODO: Check if the logged in user has permission to create categories
-
-  //   const category = await ctx.db.mutation.createCategory(
-  //     {
-  //       data: {
-  //         ...args
-  //       }
-  //     },
-  //     info
-  //   );
-
-  //   console.log(category);
-
-  //   return category;
-  // }
 };
 
 module.exports = Mutations;

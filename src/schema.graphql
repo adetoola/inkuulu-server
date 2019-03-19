@@ -10,10 +10,14 @@ type Mutation {
     thumbnail: String
   ): Project!
 
+  createCategory(title: String, description: String, code: String): Category!
+
   updateProject(title: String, shortDescription: String, description: String, amount: Int): Project!
 }
 
 type Query {
-  projects: [Project]!
+  projects(first: Int): [Project]!
   project(where: ProjectWhereUniqueInput!): Project
+  categories: [Category]!
+  category(where: CategoryWhereUniqueInput!): Category
 }
