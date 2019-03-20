@@ -52,9 +52,32 @@ const Mutations = {
   async signup(parent, args, ctx, info) {
     args.email = args.email.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
-    const user = ctx.db.mutation.createUser({ data: { ...args, password, permissions: { set: ["USER"] } } }, info);
-    // return the JWT Token
+    const user = await ctx.db.mutation.createUser(
+      { data: { ...args, password, permissions: { set: ["USER"] } } },
+      info
+    );
+
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+
+    // set jwt as cookie on response
+    ctx.response.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 180 // 6 months
+    });
+
+    return user;
+  },
+  async signin(parent, { email, password }, ctx, info) {
+    const email = args.email.toLowerCase();
+    //1. User with email
+    const user = await ctx.db.query.user({
+      where: { email }
+    });
+    if (!user) throw new Error("Email or password is incorrect!");
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) throw new Error("Email or password is incorrect!");
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+
     // set jwt as cookie on response
     ctx.response.cookie("token", token, {
       httpOnly: true,

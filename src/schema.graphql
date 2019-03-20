@@ -2,6 +2,7 @@
 
 type Mutation {
   signup(firstName: String!, lastName: String!, email: String!, password: String!, phone: String!): User!
+  signin(email: String!, password: String!): User!
 
   createProject(
     title: String
@@ -21,4 +22,5 @@ type Query {
   project(where: ProjectWhereUniqueInput!): Project
   categories: [Category]!
   category(where: CategoryWhereUniqueInput!): Category
+  me: User
 }

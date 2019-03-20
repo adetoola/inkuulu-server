@@ -4,12 +4,19 @@ const Query = {
   projects: forwardTo("db"),
   project: forwardTo("db"),
   categories: forwardTo("db"),
-  category: forwardTo("db")
-  // async projects(parent, args, ctx, info) {
-  //   console.log('Getting Projects!!');
-  //   const projects = await ctx.db.query.projects();
-  //   return projects;
-  // },
+  category: forwardTo("db"),
+  async me(parent, args, ctx, info) {
+    if (!ctx.request.userId) return null;
+
+    return ctx.db.query.user(
+      {
+        where: {
+          id: ctx.request.userId
+        }
+      },
+      info
+    );
+  }
 };
 
 module.exports = Query;
