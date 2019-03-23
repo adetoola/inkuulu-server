@@ -70,11 +70,11 @@ const Mutations = {
   },
   async signup(parent, args, ctx, info) {
     args.email = args.email.toLowerCase();
-    const hash = (await promisifiedRandomBytes(5)).toString("hex");
-    const displayName = `${args.firstName}-${args.lastName}-${hash}`;
+    const hash = (await promisifiedRandomBytes(3)).toString("hex");
+    const displayName = `${args.firstName}-${args.lastName}-${hash}`.toLowerCase();
     const password = await bcrypt.hash(args.password, 10);
     const user = await ctx.db.mutation.createUser(
-      { data: { ...args, password.toLowerCase(), displayName, permissions: { set: ["USER"] } } },
+      { data: { ...args, password, displayName, permissions: { set: ["USER"] } } },
       info
     );
 
