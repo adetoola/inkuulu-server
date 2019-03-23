@@ -1,0 +1,68 @@
+mutation {
+  user: createUser(
+    data: {
+      firstName: "Adetola"
+      lastName: "Onasanya"
+      email: "adetoola@gmail.com"
+      password: "qwertyuiop1234"
+      phone: "08136559401"
+      isAdmin: false
+      isVerified: true
+    }
+  ) {
+    id
+  }
+
+  firstCategory: createCategory(
+    data: {
+      title: "Good Health and Wellbeing"
+      slug: "good-health-wellbeing"
+      description: "Good Health and Wellbeing – by supporting projects that seek to reduce maternal and child mortality, improve access to skilled health care personnel, quality healthcare equipment; significantly reduce incidences of infectious and communicable diseases."
+      code: "SDG–3"
+    }
+  ) {
+    id
+  }
+
+  secondCategory: createCategory(
+    data: {
+      title: "Quality Education"
+      slug: "quality-education"
+      description: "In line with goal 4 objectives, access to quality education would significantly improve health and economic development, especially in remote communities. Hence, we are focusing on supporting projected promoted on Inkuluu that address the challenges of achieving quality education."
+      code: "SDG-4"
+    }
+  ) {
+    id
+  }
+
+  thirdCategory: createCategory(
+    data: {
+      title: "Clean Water and Sanitation"
+      slug: "clean-water-sanitation"
+      description: "Too many people still lack access to safely managed water supplies and sanitation facilities. Water scarcity, flooding and lack of proper wastewater management also hinder social and economic development. Hence, we support projects committed to increasing water efficiency and improving water management which are critical to balancing the competing and growing water demands from various sectors and users."
+      code: "SDG-6"
+    }
+  ) {
+    id
+  }
+  fourthCategory: createCategory(
+    data: {
+      title: "Affordable Clean Energy"
+      slug: "affordable-clean-energy"
+      description: "It is estimated that about 1 billion have no access to electricity. About 50% of that population lives in Africa. Projects that would improve access to clean affordable energy especially those centered around modern forms are supported by us."
+      code: "SDG-7"
+    }
+  ) {
+    id
+  }
+  fifthCategory: createCategory(
+    data: {
+      title: "Housing for Sustainable Cities"
+      slug: "housing-for-sustainable-cities"
+      description: "Many cities on the African continent are facing acute challenges in managing rapid urbanization—from ensuring adequate housing and infrastructure to support growing populations, to confronting the environmental impact of urban sprawl, to reducing vulnerability to disasters. Projects with sustainable solutions on low-cost housing models are high welcome."
+      code: "SDG-11"
+    }
+  ) {
+    id
+  }
+}

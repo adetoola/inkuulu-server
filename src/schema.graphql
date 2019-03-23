@@ -7,16 +7,19 @@ type Mutation {
   signup(firstName: String!, lastName: String!, email: String!, password: String!, phone: String!): User!
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
+  requestReset(email: String!): SuccessMessage
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 
   createProject(
     title: String
     shortDescription: String
     description: String
     amount: Int
+    category: String
     cover: String
     thumbnail: String
   ): Project!
-  updateProject(title: String, shortDescription: String, description: String, amount: Int): Project!
+  updateProject(title: String, shortDescription: String, description: String, category: String, amount: Int): Project!
 
   createCategory(title: String, description: String, code: String): Category!
 }
@@ -27,4 +30,19 @@ type Query {
   categories: [Category]!
   category(where: CategoryWhereUniqueInput!): Category
   me: User
+  myProjects: [Project]!
+}
+
+type User {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String!
+  isAdmin: Boolean!
+  isVerified: Boolean!
+  permissions: [Permission]
+  # profilePicture: Picture
 }

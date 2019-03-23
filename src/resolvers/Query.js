@@ -16,6 +16,20 @@ const Query = {
       },
       info
     );
+  },
+  async myProjects(parent, args, ctx, info) {
+    if (!ctx.request.userId) return null;
+
+    return ctx.db.query.projects(
+      {
+        where: {
+          owner: {
+            id: ctx.request.userId
+          }
+        }
+      },
+      info
+    );
   }
 };
 

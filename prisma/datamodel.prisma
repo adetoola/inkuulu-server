@@ -17,6 +17,7 @@ type User {
   password: String!
   phone: String!
   isAdmin: Boolean! @default(value: "false")
+  isVerified: Boolean! @default(value: "false")
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission]
@@ -32,8 +33,8 @@ type Project {
   thumbnail: String
   cover: String
   amount: Int!
-  # category: Category!
-  # owner: User!
+  category: Category!
+  owner: User!
   # reviews: [Review!]!
   # views: Views!
   # policies: Policies

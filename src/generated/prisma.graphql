@@ -1,5 +1,5 @@
-# source: https://eu1.prisma.sh/adetola-onasanya-5a4cc0/inkuulu-backend/dev
-# timestamp: Tue Mar 19 2019 20:19:03 GMT+0100 (West Africa Standard Time)
+# source: https://inkuulu-server-prod-f0a0d92f12.herokuapp.com/inkuulu-server-prod/prod
+# timestamp: Sat Mar 23 2019 10:27:44 GMT+0100 (West Africa Standard Time)
 
 type AggregateCategory {
   count: Int!
@@ -51,6 +51,11 @@ input CategoryCreateInput {
   slug: String!
   description: String!
   code: String!
+}
+
+input CategoryCreateOneInput {
+  create: CategoryCreateInput
+  connect: CategoryWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -128,6 +133,13 @@ input CategorySubscriptionWhereInput {
   node: CategoryWhereInput
 }
 
+input CategoryUpdateDataInput {
+  title: String
+  slug: String
+  description: String
+  code: String
+}
+
 input CategoryUpdateInput {
   title: String
   slug: String
@@ -140,6 +152,18 @@ input CategoryUpdateManyMutationInput {
   slug: String
   description: String
   code: String
+}
+
+input CategoryUpdateOneRequiredInput {
+  create: CategoryCreateInput
+  connect: CategoryWhereUniqueInput
+  update: CategoryUpdateDataInput
+  upsert: CategoryUpsertNestedInput
+}
+
+input CategoryUpsertNestedInput {
+  update: CategoryUpdateDataInput!
+  create: CategoryCreateInput!
 }
 
 input CategoryWhereInput {
@@ -708,35 +732,35 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createUser(data: UserCreateInput!): User!
-  createCategory(data: CategoryCreateInput!): Category!
   createPicture(data: PictureCreateInput!): Picture!
   createLocation(data: LocationCreateInput!): Location!
+  createUser(data: UserCreateInput!): User!
+  createCategory(data: CategoryCreateInput!): Category!
   createProject(data: ProjectCreateInput!): Project!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
   updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
   updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
   updateProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteCategory(where: CategoryWhereUniqueInput!): Category
   deletePicture(where: PictureWhereUniqueInput!): Picture
   deleteLocation(where: LocationWhereUniqueInput!): Location
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
   deleteProject(where: ProjectWhereUniqueInput!): Project
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
   upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
   upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
   upsertProject(where: ProjectWhereUniqueInput!, create: ProjectCreateInput!, update: ProjectUpdateInput!): Project!
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   updateManyPictures(data: PictureUpdateManyMutationInput!, where: PictureWhereInput): BatchPayload!
   updateManyLocations(data: LocationUpdateManyMutationInput!, where: LocationWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   updateManyProjects(data: ProjectUpdateManyMutationInput!, where: ProjectWhereInput): BatchPayload!
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyCategories(where: CategoryWhereInput): BatchPayload!
   deleteManyPictures(where: PictureWhereInput): BatchPayload!
   deleteManyLocations(where: LocationWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyCategories(where: CategoryWhereInput): BatchPayload!
   deleteManyProjects(where: ProjectWhereInput): BatchPayload!
 }
 
@@ -971,6 +995,8 @@ type Project implements Node {
   thumbnail: String
   cover: String
   amount: Int!
+  category: Category!
+  owner: User!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -993,6 +1019,8 @@ input ProjectCreateInput {
   thumbnail: String
   cover: String
   amount: Int!
+  category: CategoryCreateOneInput!
+  owner: UserCreateOneInput!
 }
 
 input ProjectCreateOneInput {
@@ -1092,6 +1120,8 @@ input ProjectUpdateDataInput {
   thumbnail: String
   cover: String
   amount: Int
+  category: CategoryUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredInput
 }
 
 input ProjectUpdateInput {
@@ -1102,6 +1132,8 @@ input ProjectUpdateInput {
   thumbnail: String
   cover: String
   amount: Int
+  category: CategoryUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredInput
 }
 
 input ProjectUpdateManyMutationInput {
@@ -1483,6 +1515,8 @@ input ProjectWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  category: CategoryWhereInput
+  owner: UserWhereInput
 }
 
 input ProjectWhereUniqueInput {
@@ -1491,20 +1525,20 @@ input ProjectWhereUniqueInput {
 }
 
 type Query {
-  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
   pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture]!
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
   projects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Project]!
-  user(where: UserWhereUniqueInput!): User
-  category(where: CategoryWhereUniqueInput!): Category
   picture(where: PictureWhereUniqueInput!): Picture
   location(where: LocationWhereUniqueInput!): Location
+  user(where: UserWhereUniqueInput!): User
+  category(where: CategoryWhereUniqueInput!): Category
   project(where: ProjectWhereUniqueInput!): Project
-  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
   picturesConnection(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PictureConnection!
   locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
   projectsConnection(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectConnection!
 
   """Fetches an object given its ID"""
@@ -1515,10 +1549,10 @@ type Query {
 }
 
 type Subscription {
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
   picture(where: PictureSubscriptionWhereInput): PictureSubscriptionPayload
   location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
   project(where: ProjectSubscriptionWhereInput): ProjectSubscriptionPayload
 }
 
@@ -1532,6 +1566,7 @@ type User implements Node {
   password: String!
   phone: String!
   isAdmin: Boolean!
+  isVerified: Boolean!
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
@@ -1554,9 +1589,15 @@ input UserCreateInput {
   password: String!
   phone: String!
   isAdmin: Boolean
+  isVerified: Boolean
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserCreatepermissionsInput
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
 }
 
 input UserCreatepermissionsInput {
@@ -1591,6 +1632,8 @@ enum UserOrderByInput {
   phone_DESC
   isAdmin_ASC
   isAdmin_DESC
+  isVerified_ASC
+  isVerified_DESC
   resetToken_ASC
   resetToken_DESC
   resetTokenExpiry_ASC
@@ -1607,6 +1650,7 @@ type UserPreviousValues {
   password: String!
   phone: String!
   isAdmin: Boolean!
+  isVerified: Boolean!
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
@@ -1651,6 +1695,19 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
+input UserUpdateDataInput {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  phone: String
+  isAdmin: Boolean
+  isVerified: Boolean
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+}
+
 input UserUpdateInput {
   firstName: String
   lastName: String
@@ -1658,6 +1715,7 @@ input UserUpdateInput {
   password: String
   phone: String
   isAdmin: Boolean
+  isVerified: Boolean
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
@@ -1670,13 +1728,26 @@ input UserUpdateManyMutationInput {
   password: String
   phone: String
   isAdmin: Boolean
+  isVerified: Boolean
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
 }
 
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+}
+
 input UserUpdatepermissionsInput {
   set: [Permission!]
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserWhereInput {
@@ -1976,6 +2047,10 @@ input UserWhereInput {
 
   """All values that are not equal to given value."""
   isAdmin_not: Boolean
+  isVerified: Boolean
+
+  """All values that are not equal to given value."""
+  isVerified_not: Boolean
   resetToken: String
 
   """All values that are not equal to given value."""
