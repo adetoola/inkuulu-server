@@ -3,11 +3,12 @@ mutation {
     data: {
       firstName: "Adetola"
       lastName: "Onasanya"
+      displayName: "adetola-onasanya-de456"
       email: "adetoola@gmail.com"
-      password: "qwertyuiop1234"
+      password: "$2a$10$IuY9GtCstJHP3TUkEWbJKeHFsEXJ1Ab2DlVz1RVfBqLKmCec3nLgG" #qwerty1234
       phone: "08136559401"
-      isAdmin: false
       isVerified: true
+      isPromoter: true
     }
   ) {
     id

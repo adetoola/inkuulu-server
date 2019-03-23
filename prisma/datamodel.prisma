@@ -9,19 +9,20 @@ enum Permission {
 
 type User {
   id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
   firstName: String!
   lastName: String!
+  displayName: String!
   email: String! @unique
   password: String!
-  phone: String!
-  isAdmin: Boolean! @default(value: "false")
+  phone: String! @unique
   isVerified: Boolean! @default(value: "false")
+  isPromoter: Boolean! @default(value: "true")
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission]
   # profilePicture: Picture
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Project {
@@ -32,7 +33,7 @@ type Project {
   slug: String! @unique
   thumbnail: String
   cover: String
-  amount: Int!
+  amount: Float!
   category: Category!
   owner: User!
   # reviews: [Review!]!
@@ -58,6 +59,7 @@ type Category {
 type Picture {
   id: ID! @unique
   url: String!
+  label: String!
 }
 
 type Location {

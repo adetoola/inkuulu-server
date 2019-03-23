@@ -4,7 +4,14 @@ type SuccessMessage {
 }
 
 type Mutation {
-  signup(firstName: String!, lastName: String!, email: String!, password: String!, phone: String!): User!
+  signup(
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    phone: String!
+    isPromoter: Boolean!
+  ): User!
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
   requestReset(email: String!): SuccessMessage
