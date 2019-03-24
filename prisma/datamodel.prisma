@@ -11,7 +11,7 @@ type User {
   id: ID! @unique
   firstName: String!
   lastName: String!
-  displayName: String!
+  displayName: String! @unique
   email: String! @unique
   password: String!
   phone: String! @unique

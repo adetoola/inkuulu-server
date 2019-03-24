@@ -4,6 +4,7 @@ type SuccessMessage {
 }
 
 type Mutation {
+  # User
   signup(
     firstName: String!
     lastName: String!
@@ -17,11 +18,12 @@ type Mutation {
   requestReset(email: String!): SuccessMessage
   resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 
+  # Project
   createProject(
     title: String
     shortDescription: String
     description: String
-    amount: Int
+    amount: Float
     category: String
     cover: String
     thumbnail: String
@@ -32,12 +34,20 @@ type Mutation {
 }
 
 type Query {
-  projects(first: Int): [Project]!
+  # Users
+  me: User
+  users: [User]!
+  user(where: UserWhereUniqueInput!): User
+
+  # Projects
+  projects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, first: Int): [Project]!
+  projectsConnection(where: ProjectWhereInput): ProjectConnection!
   project(where: ProjectWhereUniqueInput!): Project
+  myProjects: [Project]!
+
+  # Categories
   categories: [Category]!
   category(where: CategoryWhereUniqueInput!): Category
-  me: User
-  myProjects: [Project]!
 }
 
 type User {
@@ -46,9 +56,10 @@ type User {
   updatedAt: DateTime!
   firstName: String!
   lastName: String!
+  displayName: String!
   email: String!
   phone: String!
-  isAdmin: Boolean!
+  isPromoter: Boolean!
   isVerified: Boolean!
   permissions: [Permission]
   # profilePicture: Picture

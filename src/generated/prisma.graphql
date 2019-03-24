@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/adetola-onasanya-5a4cc0/inkuulu-backend/dev
-# timestamp: Sat Mar 23 2019 22:06:09 GMT+0100 (West Africa Standard Time)
+# timestamp: Sun Mar 24 2019 12:35:37 GMT+0100 (West Africa Standard Time)
 
 type AggregateCategory {
   count: Int!
@@ -2217,6 +2217,7 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  displayName: String
   email: String
   phone: String
 }
