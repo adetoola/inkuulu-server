@@ -1,4 +1,15 @@
 mutation {
+  fifthCategory: createCategory(
+    data: {
+      title: "Housing for Sustainable Cities"
+      slug: "housing-for-sustainable-cities"
+      description: "Many cities on the African continent are facing acute challenges in managing rapid urbanization—from ensuring adequate housing and infrastructure to support growing populations, to confronting the environmental impact of urban sprawl, to reducing vulnerability to disasters. Projects with sustainable solutions on low-cost housing models are high welcome."
+      code: "SDG-11"
+    }
+  ) {
+    id
+  }
+
   firstProject: createProject(
     data: {
       title: "Mushroom Dome Cabin: #1 on airbnb in the world"
