@@ -128,3 +128,4 @@ $RECYCLE.BIN/
 
 # Prisma Export Directory
 .export/
+.export
