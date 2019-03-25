@@ -1,5 +1,5 @@
-# source: https://eu1.prisma.sh/adetola-onasanya-5a4cc0/inkuulu-backend/dev
-# timestamp: Mon Mar 25 2019 05:03:53 GMT+0100 (West Africa Standard Time)
+# source: https://inkuulu-server-prod-f0a0d92f12.herokuapp.com/inkuulu-server-prod/prod
+# timestamp: Mon Mar 25 2019 05:49:06 GMT+0100 (West Africa Standard Time)
 
 type Admin implements Node {
   id: ID!
@@ -22,7 +22,6 @@ type AdminConnection {
 }
 
 input AdminCreateInput {
-  id: ID
   firstName: String!
   lastName: String!
   displayName: String!
@@ -484,7 +483,6 @@ type CategoryConnection {
 }
 
 input CategoryCreateInput {
-  id: ID
   title: String!
   slug: String!
   description: String!
@@ -883,7 +881,6 @@ type CityConnection {
 }
 
 input CityCreateInput {
-  id: ID
   name: String!
   neighbourhoods: NeighbourhoodCreateManyWithoutCityInput
 }
@@ -894,7 +891,6 @@ input CityCreateOneWithoutNeighbourhoodsInput {
 }
 
 input CityCreateWithoutNeighbourhoodsInput {
-  id: ID
   name: String!
 }
 
@@ -1109,7 +1105,6 @@ type LocationConnection {
 }
 
 input LocationCreateInput {
-  id: ID
   lat: Float!
   lng: Float!
   address: String!
@@ -1135,7 +1130,6 @@ input LocationCreateOneWithoutUserInput {
 }
 
 input LocationCreateWithoutNeighbourHoodInput {
-  id: ID
   lat: Float!
   lng: Float!
   address: String!
@@ -1145,7 +1139,6 @@ input LocationCreateWithoutNeighbourHoodInput {
 }
 
 input LocationCreateWithoutProjectInput {
-  id: ID
   lat: Float!
   lng: Float!
   address: String!
@@ -1155,7 +1148,6 @@ input LocationCreateWithoutProjectInput {
 }
 
 input LocationCreateWithoutUserInput {
-  id: ID
   lat: Float!
   lng: Float!
   address: String!
@@ -1439,7 +1431,6 @@ input LocationUpdateManyMutationInput {
 input LocationUpdateManyWithoutNeighbourHoodInput {
   create: [LocationCreateWithoutNeighbourHoodInput!]
   connect: [LocationWhereUniqueInput!]
-  set: [LocationWhereUniqueInput!]
   disconnect: [LocationWhereUniqueInput!]
   delete: [LocationWhereUniqueInput!]
   update: [LocationUpdateWithWhereUniqueWithoutNeighbourHoodInput!]
@@ -1786,7 +1777,6 @@ type NeighbourhoodConnection {
 }
 
 input NeighbourhoodCreateInput {
-  id: ID
   name: String!
   slug: String!
   featured: Boolean!
@@ -1807,7 +1797,6 @@ input NeighbourhoodCreateOneWithoutLocationsInput {
 }
 
 input NeighbourhoodCreateWithoutCityInput {
-  id: ID
   name: String!
   slug: String!
   featured: Boolean!
@@ -1817,7 +1806,6 @@ input NeighbourhoodCreateWithoutCityInput {
 }
 
 input NeighbourhoodCreateWithoutLocationsInput {
-  id: ID
   name: String!
   slug: String!
   featured: Boolean!
@@ -2083,7 +2071,6 @@ input NeighbourhoodUpdateManyMutationInput {
 input NeighbourhoodUpdateManyWithoutCityInput {
   create: [NeighbourhoodCreateWithoutCityInput!]
   connect: [NeighbourhoodWhereUniqueInput!]
-  set: [NeighbourhoodWhereUniqueInput!]
   disconnect: [NeighbourhoodWhereUniqueInput!]
   delete: [NeighbourhoodWhereUniqueInput!]
   update: [NeighbourhoodUpdateWithWhereUniqueWithoutCityInput!]
@@ -2353,7 +2340,6 @@ type PictureConnection {
 }
 
 input PictureCreateInput {
-  id: ID
   url: String!
   label: String!
 }
@@ -2623,7 +2609,6 @@ type ProjectConnection {
 }
 
 input ProjectCreateInput {
-  id: ID
   title: String!
   shortDescription: String!
   description: String!
@@ -2649,7 +2634,6 @@ input ProjectCreateOneWithoutLocationInput {
 }
 
 input ProjectCreateWithoutLocationInput {
-  id: ID
   title: String!
   shortDescription: String!
   description: String!
@@ -2664,7 +2648,6 @@ input ProjectCreateWithoutLocationInput {
 }
 
 input ProjectCreateWithoutOwnerInput {
-  id: ID
   title: String!
   shortDescription: String!
   description: String!
@@ -3211,7 +3194,6 @@ input ProjectUpdateManyMutationInput {
 input ProjectUpdateManyWithoutOwnerInput {
   create: [ProjectCreateWithoutOwnerInput!]
   connect: [ProjectWhereUniqueInput!]
-  set: [ProjectWhereUniqueInput!]
   disconnect: [ProjectWhereUniqueInput!]
   delete: [ProjectWhereUniqueInput!]
   update: [ProjectUpdateWithWhereUniqueWithoutOwnerInput!]
@@ -3767,7 +3749,6 @@ type UserConnection {
 }
 
 input UserCreateInput {
-  id: ID
   firstName: String!
   lastName: String!
   displayName: String!
@@ -3799,7 +3780,6 @@ input UserCreatepermissionsInput {
 }
 
 input UserCreateWithoutLocationInput {
-  id: ID
   firstName: String!
   lastName: String!
   displayName: String!
@@ -3816,7 +3796,6 @@ input UserCreateWithoutLocationInput {
 }
 
 input UserCreateWithoutOwnedProjectsInput {
-  id: ID
   firstName: String!
   lastName: String!
   displayName: String!
