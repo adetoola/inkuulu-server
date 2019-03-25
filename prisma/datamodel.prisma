@@ -7,6 +7,19 @@ enum Permission {
   PERMISSIONUPDATE
 }
 
+enum Type {
+  PROMOTER
+  SUPPORTER
+}
+
+enum AdminType {
+  SUPERADMIN
+  ADMIN
+  EDITOR
+  ANALYST
+  CSUPPORT
+}
+
 type User {
   id: ID! @unique
   firstName: String!
@@ -16,13 +29,26 @@ type User {
   password: String!
   phone: String! @unique
   isVerified: Boolean! @default(value: "false")
-  isPromoter: Boolean! @default(value: "true")
+  type: Type! @default(value: PROMOTER)
+  ownedProjects: [Project!]!
+  location: Location
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission]
-  # profilePicture: Picture
+  profilePicture: String!
+    @default(value: "https://res.cloudinary.com/inkuulu/image/upload/v1553480376/inkuulu/default-avatar.jpg")
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+type Admin {
+  id: ID! @unique
+  firstName: String!
+  lastName: String!
+  displayName: String! @unique
+  email: String! @unique
+  password: String!
+  phone: String! @unique
 }
 
 type Project {
@@ -31,19 +57,23 @@ type Project {
   shortDescription: String!
   description: String!
   slug: String! @unique
-  thumbnail: String
   cover: String
+  thumbnail: String
+  featured: Boolean! @default(value: "false")
+  featuredSpread: String
   amount: Float!
   category: Category!
   owner: User!
+  # Make location required later
+  location: Location
   # reviews: [Review!]!
   # views: Views!
   # policies: Policies
-  createdAt: DateTime!
-  updatedAt: DateTime!
   # supporters: [Supporter!]!
   # pictures: [Picture!]!
   # popularity: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Category {
@@ -66,11 +96,26 @@ type Location {
   id: ID! @unique
   lat: Float!
   lng: Float!
-  # neighbourHood: Neighbourhood
-  # user: User
-  place: Project
+  neighbourHood: Neighbourhood
+  user: User
+  project: Project
   address: String!
   directions: String!
-  # experience: Experience
-  # restaurant: Restaurant
+}
+
+type Neighbourhood {
+  id: ID! @unique
+  locations: [Location!]!
+  name: String!
+  slug: String!
+  homePreview: Picture
+  city: City!
+  featured: Boolean!
+  popularity: Int!
+}
+
+type City {
+  id: ID! @unique
+  name: String!
+  neighbourhoods: [Neighbourhood!]!
 }

@@ -50,17 +50,17 @@ type Query {
   category(where: CategoryWhereUniqueInput!): Category
 }
 
-type User {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  firstName: String!
-  lastName: String!
-  displayName: String!
-  email: String!
-  phone: String!
-  isPromoter: Boolean!
-  isVerified: Boolean!
-  permissions: [Permission]
-  # profilePicture: Picture
-}
+# type User {
+#   id: ID!
+#   createdAt: DateTime!
+#   updatedAt: DateTime!
+#   firstName: String!
+#   lastName: String!
+#   displayName: String!
+#   email: String!
+#   phone: String!
+#   isPromoter: Boolean!
+#   isVerified: Boolean!
+#   permissions: [Permission]
+#   # profilePicture: Picture
+# }

@@ -1,67 +1,271 @@
 mutation {
-  user: createUser(
+  firstProject: createProject(
     data: {
-      firstName: "Adetola"
-      lastName: "Onasanya"
-      displayName: "adetola-onasanya-de456"
-      email: "adetoola@gmail.com"
-      password: "$2a$10$IuY9GtCstJHP3TUkEWbJKeHFsEXJ1Ab2DlVz1RVfBqLKmCec3nLgG" #qwerty1234
-      phone: "08136559401"
-      isVerified: true
-      isPromoter: true
+      title: "Mushroom Dome Cabin: #1 on airbnb in the world"
+      shortDescription: "With a geodesic dome loft & a large deck in the trees, you'll feel like you're in a tree house in the woods. We are in a quiet yet convenient location. Shaded by Oak and Madrone trees and next to a Redwood grove, you can enjoy the outdoors from the deck. In the summer, it is cool and in the winter you might get to hear the creek running below."
+      description: "The space\\n\\nWe have 10 acres next to land without fences so you will get to enjoy nature: just hang out on the deck, take a hike in the woods, watch the hummingbirds, pet the goats, go to the beach or gaze at the stars - as long as the moon isn't full. ; ) During the summer, if there isn't any nightly fog, we can see the Milky Way here.\\n\\nTo check our availability, click on the \"Request to Support\" link."
+      slug: "mushroom-dome-cabin-on-airbnb-in-the-world"
+      cover: "https://res.cloudinary.com/inkuulu/image/upload/v1553378361/inkuulu/jgh4iuhofmxdzvodakei.jpg"
+      thumbnail: "https://res.cloudinary.com/inkuulu/image/upload/c_thumb,g_center,h_200,q_auto,w_300/v1553378361/inkuulu/jgh4iuhofmxdzvodakei.jpg"
+      amount: 3500500
+      category: {
+        create: {
+          title: "Good Health and Wellbeing"
+          slug: "good-health-wellbeing"
+          description: "Good Health and Wellbeing – by supporting projects that seek to reduce maternal and child mortality, improve access to skilled health care personnel, quality healthcare equipment; significantly reduce incidences of infectious and communicable diseases."
+          code: "SDG–3"
+        }
+      }
+      owner: {
+        create: {
+          firstName: "Adetola"
+          lastName: "Onasanya"
+          displayName: "adetola-onasanya-de456c"
+          email: "test@gmail.com"
+          password: "$2a$10$IuY9GtCstJHP3TUkEWbJKeHFsEXJ1Ab2DlVz1RVfBqLKmCec3nLgG" #qwerty1234
+          phone: "08042345678"
+          isVerified: true
+          type: PROMOTER
+          location: {
+            create: {
+              address: "2 Salmon Way, Moss Landing, Monterey County, CA, USA"
+              directions: "Follow the street to the end, then right"
+              lat: 36.805235
+              lng: 121.7892066
+              neighbourHood: {
+                create: {
+                  name: "Monterey Countey"
+                  slug: "monterey-countey"
+                  featured: true
+                  popularity: 1
+                  city: { create: { name: "Moss Landing" } }
+                }
+              }
+            }
+          }
+        }
+      }
+      location: {
+        create: {
+          address: "W Crestline Ave, Littleton, CO 80120, USA"
+          directions: "Follow the street to the end, then right"
+          lat: 39.619115
+          lng: -105.016560
+          neighbourHood: {
+            create: {
+              name: "Denver"
+              slug: "denver"
+              featured: true
+              popularity: 1
+              city: { create: { name: "Denver" } }
+            }
+          }
+        }
+      }
     }
   ) {
     id
   }
 
-  firstCategory: createCategory(
+  secondProject: createProject(
     data: {
-      title: "Good Health and Wellbeing"
-      slug: "good-health-wellbeing"
-      description: "Good Health and Wellbeing – by supporting projects that seek to reduce maternal and child mortality, improve access to skilled health care personnel, quality healthcare equipment; significantly reduce incidences of infectious and communicable diseases."
-      code: "SDG–3"
+      title: "Apartment 1 of 4 with green terrace in Roma Norte"
+      shortDescription: "We offer other options with incredible terraces: Wonderful little loft with enjoyable terrace. Green and relaxing in the heart of the bustling city."
+      description: "We offer other options with incredible terraces: Wonderful little loft with enjoyable terrace. Green and relaxing in the heart of the bustling city."
+      slug: "apartment-green-terrace-roma-norte"
+      cover: "https://res.cloudinary.com/inkuulu/image/upload/v1553377481/inkuulu/ab4bm5r2ipfcarewseix.jpg"
+      thumbnail: "https://res.cloudinary.com/inkuulu/image/upload/c_thumb,g_center,h_200,q_auto,w_300/v1553377481/inkuulu/ab4bm5r2ipfcarewseix.jpg"
+      amount: 234567892
+      category: {
+        create: {
+          title: "Quality Education"
+          slug: "quality-education"
+          description: "In line with goal 4 objectives, access to quality education would significantly improve health and economic development, especially in remote communities. Hence, we are focusing on supporting projected promoted on Inkuluu that address the challenges of achieving quality education."
+          code: "SDG-4"
+        }
+      }
+      owner: {
+        create: {
+          firstName: "Musa"
+          lastName: "Mohammed"
+          displayName: "musa-mohammed-be4456"
+          email: "test2@gmail.com"
+          password: "$2a$10$IuY9GtCstJHP3TUkEWbJKeHFsEXJ1Ab2DlVz1RVfBqLKmCec3nLgG" #qwerty1234
+          phone: "08012345679"
+          isVerified: true
+          type: PROMOTER
+          location: {
+            create: {
+              address: "Narvarte Oriente, Mexico City, CDMX, Mexico"
+              directions: "Follow the street to the end, then right"
+              lat: 19.398095
+              lng: -99.149452
+              neighbourHood: {
+                create: {
+                  name: "Mexico City"
+                  slug: "mexico-city"
+                  featured: true
+                  popularity: 1
+                  city: { create: { name: "Mexico City" } }
+                }
+              }
+            }
+          }
+        }
+      }
+      location: {
+        create: {
+          address: "2 Salmon Way, Moss Landing, Monterey County, CA, USA"
+          directions: "Follow the street to the end, then right"
+          lat: 36.805235
+          lng: 121.7892066
+          neighbourHood: {
+            create: {
+              name: "Monterey Countey"
+              slug: "monterey-countey"
+              featured: true
+              popularity: 1
+              city: { create: { name: "Moss Landing" } }
+            }
+          }
+        }
+      }
     }
   ) {
     id
   }
 
-  secondCategory: createCategory(
+  thirdProject: createProject(
     data: {
-      title: "Quality Education"
-      slug: "quality-education"
-      description: "In line with goal 4 objectives, access to quality education would significantly improve health and economic development, especially in remote communities. Hence, we are focusing on supporting projected promoted on Inkuluu that address the challenges of achieving quality education."
-      code: "SDG-4"
+      title: "Urban Farmhouse at Curtis Park"
+      shortDescription: "The Urban Farmhouse circa 1886 - meticulously converted in 2013. Situated adjacent to community garden. The updates afford you all the modern convenience you could ask for and charm you can only get from a building built in 1886. A true Charmer."
+      description: "The Urban Farmhouse circa 1886 - meticulously converted in 2013. Situated adjacent to community garden. The updates afford you all the modern convenience you could ask for and charm you can only get from a building built in 1886. A true Charmer."
+      slug: "urban-farmhouse-curtis-park"
+      cover: "https://res.cloudinary.com/inkuulu/image/upload/v1553254948/inkuulu/kidbez01k220e8nhmj6c.jpg"
+      thumbnail: "https://res.cloudinary.com/inkuulu/image/upload/c_thumb,g_center,h_200,q_auto,w_300/v1553254948/inkuulu/kidbez01k220e8nhmj6c.jpg"
+      amount: 76543433
+      category: {
+        create: {
+          title: "Clean Water and Sanitation"
+          slug: "clean-water-sanitation"
+          description: "Too many people still lack access to safely managed water supplies and sanitation facilities. Water scarcity, flooding and lack of proper wastewater management also hinder social and economic development. Hence, we support projects committed to increasing water efficiency and improving water management which are critical to balancing the competing and growing water demands from various sectors and users."
+          code: "SDG-6"
+        }
+      }
+      owner: {
+        create: {
+          firstName: "Busola"
+          lastName: "Majekodunmi"
+          displayName: "busola-majekodunmi-be4456"
+          email: "test3@gmail.com"
+          password: "$2a$10$IuY9GtCstJHP3TUkEWbJKeHFsEXJ1Ab2DlVz1RVfBqLKmCec3nLgG" #qwerty1234
+          phone: "0801234560"
+          isVerified: true
+          type: PROMOTER
+          location: {
+            create: {
+              address: "2 Salmon Way, Moss Landing, Monterey County, CA, USA"
+              directions: "Follow the street to the end, then right"
+              lat: 36.805235
+              lng: 121.7892066
+              neighbourHood: {
+                create: {
+                  name: "Monterey Countey"
+                  slug: "monterey-countey"
+                  featured: true
+                  popularity: 1
+                  city: { create: { name: "Moss Landing" } }
+                }
+              }
+            }
+          }
+        }
+      }
+      location: {
+        create: {
+          address: "Greenwood, Nashville, TN 37206, USA"
+          directions: "Follow the street to the end, then right"
+          lat: 36.187977
+          lng: -86.751635
+          neighbourHood: {
+            create: {
+              name: "Nashville"
+              slug: "nashville"
+              featured: true
+              popularity: 1
+              city: { create: { name: "Nashville" } }
+            }
+          }
+        }
+      }
     }
   ) {
     id
   }
 
-  thirdCategory: createCategory(
+  fourthProject: createProject(
     data: {
-      title: "Clean Water and Sanitation"
-      slug: "clean-water-sanitation"
-      description: "Too many people still lack access to safely managed water supplies and sanitation facilities. Water scarcity, flooding and lack of proper wastewater management also hinder social and economic development. Hence, we support projects committed to increasing water efficiency and improving water management which are critical to balancing the competing and growing water demands from various sectors and users."
-      code: "SDG-6"
-    }
-  ) {
-    id
-  }
-  fourthCategory: createCategory(
-    data: {
-      title: "Affordable Clean Energy"
-      slug: "affordable-clean-energy"
-      description: "It is estimated that about 1 billion have no access to electricity. About 50% of that population lives in Africa. Projects that would improve access to clean affordable energy especially those centered around modern forms are supported by us."
-      code: "SDG-7"
-    }
-  ) {
-    id
-  }
-  fifthCategory: createCategory(
-    data: {
-      title: "Housing for Sustainable Cities"
-      slug: "housing-for-sustainable-cities"
-      description: "Many cities on the African continent are facing acute challenges in managing rapid urbanization—from ensuring adequate housing and infrastructure to support growing populations, to confronting the environmental impact of urban sprawl, to reducing vulnerability to disasters. Projects with sustainable solutions on low-cost housing models are high welcome."
-      code: "SDG-11"
+      title: "Romantic, Cozy Cottage Next to Downtown"
+      shortDescription: "Comfy, cozy and romantic cottage less than 3 miles from Downtown. The Cleveland Cottage provides a private oasis within city limits that includes full kitchen, Wifi, parking, electric fireplace & entrance through a private courtyard with fire pit."
+      description: "Comfy, cozy and romantic cottage less than 3 miles from Downtown. The Cleveland Cottage provides a private oasis within city limits that includes full kitchen, Wifi, parking, electric fireplace & entrance through a private courtyard with fire pit."
+      slug: "romantic-cozy-cottage-next-to-downtown"
+      cover: "https://res.cloudinary.com/inkuulu/image/upload/v1553223680/inkuulu/yhsehqzoytgbxrqivz5m.jpg"
+      thumbnail: "https://res.cloudinary.com/inkuulu/image/upload/c_thumb,g_center,h_200,q_auto,w_300/v1553223680/inkuulu/yhsehqzoytgbxrqivz5m.jpg"
+      amount: 9874531
+      category: {
+        create: {
+          title: "Affordable Clean Energy"
+          slug: "affordable-clean-energy"
+          description: "It is estimated that about 1 billion have no access to electricity. About 50% of that population lives in Africa. Projects that would improve access to clean affordable energy especially those centered around modern forms are supported by us."
+          code: "SDG-7"
+        }
+      }
+      owner: {
+        create: {
+          firstName: "Malachi"
+          lastName: "Egbugba"
+          displayName: "malachi-egbugba-be4456"
+          email: "test4@gmail.com"
+          password: "$2a$10$IuY9GtCstJHP3TUkEWbJKeHFsEXJ1Ab2DlVz1RVfBqLKmCec3nLgG" #qwerty1234
+          phone: "08012335678"
+          isVerified: true
+          type: PROMOTER
+          location: {
+            create: {
+              address: "2 Salmon Way, Moss Landing, Monterey County, CA, USA"
+              directions: "Follow the street to the end, then right"
+              lat: 36.805235
+              lng: 121.7892066
+              neighbourHood: {
+                create: {
+                  name: "Monterey Countey"
+                  slug: "monterey-countey"
+                  featured: true
+                  popularity: 1
+                  city: { create: { name: "Moss Landing" } }
+                }
+              }
+            }
+          }
+        }
+      }
+      location: {
+        create: {
+          address: "2 Salmon Way, Moss Landing, Monterey County, CA, USA"
+          directions: "Follow the street to the end, then right"
+          lat: 36.805235
+          lng: 121.7892066
+          neighbourHood: {
+            create: {
+              name: "Monterey Countey"
+              slug: "monterey-countey"
+              featured: true
+              popularity: 1
+              city: { create: { name: "Moss Landing" } }
+            }
+          }
+        }
+      }
     }
   ) {
     id

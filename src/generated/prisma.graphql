@@ -1,11 +1,448 @@
 # source: https://eu1.prisma.sh/adetola-onasanya-5a4cc0/inkuulu-backend/dev
-# timestamp: Sun Mar 24 2019 12:35:37 GMT+0100 (West Africa Standard Time)
+# timestamp: Mon Mar 25 2019 05:03:53 GMT+0100 (West Africa Standard Time)
+
+type Admin implements Node {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  displayName: String!
+  email: String!
+  password: String!
+  phone: String!
+}
+
+"""A connection to a list of items."""
+type AdminConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [AdminEdge]!
+  aggregate: AggregateAdmin!
+}
+
+input AdminCreateInput {
+  id: ID
+  firstName: String!
+  lastName: String!
+  displayName: String!
+  email: String!
+  password: String!
+  phone: String!
+}
+
+"""An edge in a connection."""
+type AdminEdge {
+  """The item at the end of the edge."""
+  node: Admin!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum AdminOrderByInput {
+  id_ASC
+  id_DESC
+  firstName_ASC
+  firstName_DESC
+  lastName_ASC
+  lastName_DESC
+  displayName_ASC
+  displayName_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  phone_ASC
+  phone_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type AdminPreviousValues {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  displayName: String!
+  email: String!
+  password: String!
+  phone: String!
+}
+
+type AdminSubscriptionPayload {
+  mutation: MutationType!
+  node: Admin
+  updatedFields: [String!]
+  previousValues: AdminPreviousValues
+}
+
+input AdminSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [AdminSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [AdminSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [AdminSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: AdminWhereInput
+}
+
+input AdminUpdateInput {
+  firstName: String
+  lastName: String
+  displayName: String
+  email: String
+  password: String
+  phone: String
+}
+
+input AdminUpdateManyMutationInput {
+  firstName: String
+  lastName: String
+  displayName: String
+  email: String
+  password: String
+  phone: String
+}
+
+input AdminWhereInput {
+  """Logical AND on all given filters."""
+  AND: [AdminWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [AdminWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [AdminWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  firstName: String
+
+  """All values that are not equal to given value."""
+  firstName_not: String
+
+  """All values that are contained in given list."""
+  firstName_in: [String!]
+
+  """All values that are not contained in given list."""
+  firstName_not_in: [String!]
+
+  """All values less than the given value."""
+  firstName_lt: String
+
+  """All values less than or equal the given value."""
+  firstName_lte: String
+
+  """All values greater than the given value."""
+  firstName_gt: String
+
+  """All values greater than or equal the given value."""
+  firstName_gte: String
+
+  """All values containing the given string."""
+  firstName_contains: String
+
+  """All values not containing the given string."""
+  firstName_not_contains: String
+
+  """All values starting with the given string."""
+  firstName_starts_with: String
+
+  """All values not starting with the given string."""
+  firstName_not_starts_with: String
+
+  """All values ending with the given string."""
+  firstName_ends_with: String
+
+  """All values not ending with the given string."""
+  firstName_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
+  displayName: String
+
+  """All values that are not equal to given value."""
+  displayName_not: String
+
+  """All values that are contained in given list."""
+  displayName_in: [String!]
+
+  """All values that are not contained in given list."""
+  displayName_not_in: [String!]
+
+  """All values less than the given value."""
+  displayName_lt: String
+
+  """All values less than or equal the given value."""
+  displayName_lte: String
+
+  """All values greater than the given value."""
+  displayName_gt: String
+
+  """All values greater than or equal the given value."""
+  displayName_gte: String
+
+  """All values containing the given string."""
+  displayName_contains: String
+
+  """All values not containing the given string."""
+  displayName_not_contains: String
+
+  """All values starting with the given string."""
+  displayName_starts_with: String
+
+  """All values not starting with the given string."""
+  displayName_not_starts_with: String
+
+  """All values ending with the given string."""
+  displayName_ends_with: String
+
+  """All values not ending with the given string."""
+  displayName_not_ends_with: String
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  phone: String
+
+  """All values that are not equal to given value."""
+  phone_not: String
+
+  """All values that are contained in given list."""
+  phone_in: [String!]
+
+  """All values that are not contained in given list."""
+  phone_not_in: [String!]
+
+  """All values less than the given value."""
+  phone_lt: String
+
+  """All values less than or equal the given value."""
+  phone_lte: String
+
+  """All values greater than the given value."""
+  phone_gt: String
+
+  """All values greater than or equal the given value."""
+  phone_gte: String
+
+  """All values containing the given string."""
+  phone_contains: String
+
+  """All values not containing the given string."""
+  phone_not_contains: String
+
+  """All values starting with the given string."""
+  phone_starts_with: String
+
+  """All values not starting with the given string."""
+  phone_not_starts_with: String
+
+  """All values ending with the given string."""
+  phone_ends_with: String
+
+  """All values not ending with the given string."""
+  phone_not_ends_with: String
+}
+
+input AdminWhereUniqueInput {
+  id: ID
+  displayName: String
+  email: String
+  phone: String
+}
+
+type AggregateAdmin {
+  count: Int!
+}
 
 type AggregateCategory {
   count: Int!
 }
 
+type AggregateCity {
+  count: Int!
+}
+
 type AggregateLocation {
+  count: Int!
+}
+
+type AggregateNeighbourhood {
   count: Int!
 }
 
@@ -429,13 +866,234 @@ input CategoryWhereUniqueInput {
   code: String
 }
 
+type City implements Node {
+  id: ID!
+  name: String!
+  neighbourhoods(where: NeighbourhoodWhereInput, orderBy: NeighbourhoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Neighbourhood!]
+}
+
+"""A connection to a list of items."""
+type CityConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CityEdge]!
+  aggregate: AggregateCity!
+}
+
+input CityCreateInput {
+  id: ID
+  name: String!
+  neighbourhoods: NeighbourhoodCreateManyWithoutCityInput
+}
+
+input CityCreateOneWithoutNeighbourhoodsInput {
+  create: CityCreateWithoutNeighbourhoodsInput
+  connect: CityWhereUniqueInput
+}
+
+input CityCreateWithoutNeighbourhoodsInput {
+  id: ID
+  name: String!
+}
+
+"""An edge in a connection."""
+type CityEdge {
+  """The item at the end of the edge."""
+  node: City!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CityOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type CityPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type CitySubscriptionPayload {
+  mutation: MutationType!
+  node: City
+  updatedFields: [String!]
+  previousValues: CityPreviousValues
+}
+
+input CitySubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CitySubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CitySubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CitySubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CityWhereInput
+}
+
+input CityUpdateInput {
+  name: String
+  neighbourhoods: NeighbourhoodUpdateManyWithoutCityInput
+}
+
+input CityUpdateManyMutationInput {
+  name: String
+}
+
+input CityUpdateOneRequiredWithoutNeighbourhoodsInput {
+  create: CityCreateWithoutNeighbourhoodsInput
+  connect: CityWhereUniqueInput
+  update: CityUpdateWithoutNeighbourhoodsDataInput
+  upsert: CityUpsertWithoutNeighbourhoodsInput
+}
+
+input CityUpdateWithoutNeighbourhoodsDataInput {
+  name: String
+}
+
+input CityUpsertWithoutNeighbourhoodsInput {
+  update: CityUpdateWithoutNeighbourhoodsDataInput!
+  create: CityCreateWithoutNeighbourhoodsInput!
+}
+
+input CityWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CityWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CityWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CityWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  neighbourhoods_every: NeighbourhoodWhereInput
+  neighbourhoods_some: NeighbourhoodWhereInput
+  neighbourhoods_none: NeighbourhoodWhereInput
+}
+
+input CityWhereUniqueInput {
+  id: ID
+}
+
 scalar DateTime
 
 type Location implements Node {
   id: ID!
   lat: Float!
   lng: Float!
-  place: Project
+  neighbourHood: Neighbourhood
+  user: User
+  project: Project
   address: String!
   directions: String!
 }
@@ -456,7 +1114,54 @@ input LocationCreateInput {
   lng: Float!
   address: String!
   directions: String!
-  place: ProjectCreateOneInput
+  neighbourHood: NeighbourhoodCreateOneWithoutLocationsInput
+  user: UserCreateOneWithoutLocationInput
+  project: ProjectCreateOneWithoutLocationInput
+}
+
+input LocationCreateManyWithoutNeighbourHoodInput {
+  create: [LocationCreateWithoutNeighbourHoodInput!]
+  connect: [LocationWhereUniqueInput!]
+}
+
+input LocationCreateOneWithoutProjectInput {
+  create: LocationCreateWithoutProjectInput
+  connect: LocationWhereUniqueInput
+}
+
+input LocationCreateOneWithoutUserInput {
+  create: LocationCreateWithoutUserInput
+  connect: LocationWhereUniqueInput
+}
+
+input LocationCreateWithoutNeighbourHoodInput {
+  id: ID
+  lat: Float!
+  lng: Float!
+  address: String!
+  directions: String!
+  user: UserCreateOneWithoutLocationInput
+  project: ProjectCreateOneWithoutLocationInput
+}
+
+input LocationCreateWithoutProjectInput {
+  id: ID
+  lat: Float!
+  lng: Float!
+  address: String!
+  directions: String!
+  neighbourHood: NeighbourhoodCreateOneWithoutLocationsInput
+  user: UserCreateOneWithoutLocationInput
+}
+
+input LocationCreateWithoutUserInput {
+  id: ID
+  lat: Float!
+  lng: Float!
+  address: String!
+  directions: String!
+  neighbourHood: NeighbourhoodCreateOneWithoutLocationsInput
+  project: ProjectCreateOneWithoutLocationInput
 }
 
 """An edge in a connection."""
@@ -491,6 +1196,181 @@ type LocationPreviousValues {
   lng: Float!
   address: String!
   directions: String!
+}
+
+input LocationScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [LocationScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [LocationScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [LocationScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  lat: Float
+
+  """All values that are not equal to given value."""
+  lat_not: Float
+
+  """All values that are contained in given list."""
+  lat_in: [Float!]
+
+  """All values that are not contained in given list."""
+  lat_not_in: [Float!]
+
+  """All values less than the given value."""
+  lat_lt: Float
+
+  """All values less than or equal the given value."""
+  lat_lte: Float
+
+  """All values greater than the given value."""
+  lat_gt: Float
+
+  """All values greater than or equal the given value."""
+  lat_gte: Float
+  lng: Float
+
+  """All values that are not equal to given value."""
+  lng_not: Float
+
+  """All values that are contained in given list."""
+  lng_in: [Float!]
+
+  """All values that are not contained in given list."""
+  lng_not_in: [Float!]
+
+  """All values less than the given value."""
+  lng_lt: Float
+
+  """All values less than or equal the given value."""
+  lng_lte: Float
+
+  """All values greater than the given value."""
+  lng_gt: Float
+
+  """All values greater than or equal the given value."""
+  lng_gte: Float
+  address: String
+
+  """All values that are not equal to given value."""
+  address_not: String
+
+  """All values that are contained in given list."""
+  address_in: [String!]
+
+  """All values that are not contained in given list."""
+  address_not_in: [String!]
+
+  """All values less than the given value."""
+  address_lt: String
+
+  """All values less than or equal the given value."""
+  address_lte: String
+
+  """All values greater than the given value."""
+  address_gt: String
+
+  """All values greater than or equal the given value."""
+  address_gte: String
+
+  """All values containing the given string."""
+  address_contains: String
+
+  """All values not containing the given string."""
+  address_not_contains: String
+
+  """All values starting with the given string."""
+  address_starts_with: String
+
+  """All values not starting with the given string."""
+  address_not_starts_with: String
+
+  """All values ending with the given string."""
+  address_ends_with: String
+
+  """All values not ending with the given string."""
+  address_not_ends_with: String
+  directions: String
+
+  """All values that are not equal to given value."""
+  directions_not: String
+
+  """All values that are contained in given list."""
+  directions_in: [String!]
+
+  """All values that are not contained in given list."""
+  directions_not_in: [String!]
+
+  """All values less than the given value."""
+  directions_lt: String
+
+  """All values less than or equal the given value."""
+  directions_lte: String
+
+  """All values greater than the given value."""
+  directions_gt: String
+
+  """All values greater than or equal the given value."""
+  directions_gte: String
+
+  """All values containing the given string."""
+  directions_contains: String
+
+  """All values not containing the given string."""
+  directions_not_contains: String
+
+  """All values starting with the given string."""
+  directions_starts_with: String
+
+  """All values not starting with the given string."""
+  directions_not_starts_with: String
+
+  """All values ending with the given string."""
+  directions_ends_with: String
+
+  """All values not ending with the given string."""
+  directions_not_ends_with: String
 }
 
 type LocationSubscriptionPayload {
@@ -537,7 +1417,16 @@ input LocationUpdateInput {
   lng: Float
   address: String
   directions: String
-  place: ProjectUpdateOneInput
+  neighbourHood: NeighbourhoodUpdateOneWithoutLocationsInput
+  user: UserUpdateOneWithoutLocationInput
+  project: ProjectUpdateOneWithoutLocationInput
+}
+
+input LocationUpdateManyDataInput {
+  lat: Float
+  lng: Float
+  address: String
+  directions: String
 }
 
 input LocationUpdateManyMutationInput {
@@ -545,6 +1434,89 @@ input LocationUpdateManyMutationInput {
   lng: Float
   address: String
   directions: String
+}
+
+input LocationUpdateManyWithoutNeighbourHoodInput {
+  create: [LocationCreateWithoutNeighbourHoodInput!]
+  connect: [LocationWhereUniqueInput!]
+  set: [LocationWhereUniqueInput!]
+  disconnect: [LocationWhereUniqueInput!]
+  delete: [LocationWhereUniqueInput!]
+  update: [LocationUpdateWithWhereUniqueWithoutNeighbourHoodInput!]
+  updateMany: [LocationUpdateManyWithWhereNestedInput!]
+  deleteMany: [LocationScalarWhereInput!]
+  upsert: [LocationUpsertWithWhereUniqueWithoutNeighbourHoodInput!]
+}
+
+input LocationUpdateManyWithWhereNestedInput {
+  where: LocationScalarWhereInput!
+  data: LocationUpdateManyDataInput!
+}
+
+input LocationUpdateOneWithoutProjectInput {
+  create: LocationCreateWithoutProjectInput
+  connect: LocationWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: LocationUpdateWithoutProjectDataInput
+  upsert: LocationUpsertWithoutProjectInput
+}
+
+input LocationUpdateOneWithoutUserInput {
+  create: LocationCreateWithoutUserInput
+  connect: LocationWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: LocationUpdateWithoutUserDataInput
+  upsert: LocationUpsertWithoutUserInput
+}
+
+input LocationUpdateWithoutNeighbourHoodDataInput {
+  lat: Float
+  lng: Float
+  address: String
+  directions: String
+  user: UserUpdateOneWithoutLocationInput
+  project: ProjectUpdateOneWithoutLocationInput
+}
+
+input LocationUpdateWithoutProjectDataInput {
+  lat: Float
+  lng: Float
+  address: String
+  directions: String
+  neighbourHood: NeighbourhoodUpdateOneWithoutLocationsInput
+  user: UserUpdateOneWithoutLocationInput
+}
+
+input LocationUpdateWithoutUserDataInput {
+  lat: Float
+  lng: Float
+  address: String
+  directions: String
+  neighbourHood: NeighbourhoodUpdateOneWithoutLocationsInput
+  project: ProjectUpdateOneWithoutLocationInput
+}
+
+input LocationUpdateWithWhereUniqueWithoutNeighbourHoodInput {
+  where: LocationWhereUniqueInput!
+  data: LocationUpdateWithoutNeighbourHoodDataInput!
+}
+
+input LocationUpsertWithoutProjectInput {
+  update: LocationUpdateWithoutProjectDataInput!
+  create: LocationCreateWithoutProjectInput!
+}
+
+input LocationUpsertWithoutUserInput {
+  update: LocationUpdateWithoutUserDataInput!
+  create: LocationCreateWithoutUserInput!
+}
+
+input LocationUpsertWithWhereUniqueWithoutNeighbourHoodInput {
+  where: LocationWhereUniqueInput!
+  update: LocationUpdateWithoutNeighbourHoodDataInput!
+  create: LocationCreateWithoutNeighbourHoodInput!
 }
 
 input LocationWhereInput {
@@ -720,7 +1692,9 @@ input LocationWhereInput {
 
   """All values not ending with the given string."""
   directions_not_ends_with: String
-  place: ProjectWhereInput
+  neighbourHood: NeighbourhoodWhereInput
+  user: UserWhereInput
+  project: ProjectWhereInput
 }
 
 input LocationWhereUniqueInput {
@@ -734,42 +1708,602 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createPicture(data: PictureCreateInput!): Picture!
-  createLocation(data: LocationCreateInput!): Location!
   createUser(data: UserCreateInput!): User!
-  createCategory(data: CategoryCreateInput!): Category!
+  createAdmin(data: AdminCreateInput!): Admin!
   createProject(data: ProjectCreateInput!): Project!
-  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
-  updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
+  createLocation(data: LocationCreateInput!): Location!
+  createNeighbourhood(data: NeighbourhoodCreateInput!): Neighbourhood!
+  createCity(data: CityCreateInput!): City!
+  createPicture(data: PictureCreateInput!): Picture!
+  createCategory(data: CategoryCreateInput!): Category!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
+  updateAdmin(data: AdminUpdateInput!, where: AdminWhereUniqueInput!): Admin
   updateProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project
-  deletePicture(where: PictureWhereUniqueInput!): Picture
-  deleteLocation(where: LocationWhereUniqueInput!): Location
+  updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
+  updateNeighbourhood(data: NeighbourhoodUpdateInput!, where: NeighbourhoodWhereUniqueInput!): Neighbourhood
+  updateCity(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
+  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
+  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
   deleteUser(where: UserWhereUniqueInput!): User
-  deleteCategory(where: CategoryWhereUniqueInput!): Category
+  deleteAdmin(where: AdminWhereUniqueInput!): Admin
   deleteProject(where: ProjectWhereUniqueInput!): Project
-  upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
-  upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
+  deleteLocation(where: LocationWhereUniqueInput!): Location
+  deleteNeighbourhood(where: NeighbourhoodWhereUniqueInput!): Neighbourhood
+  deleteCity(where: CityWhereUniqueInput!): City
+  deletePicture(where: PictureWhereUniqueInput!): Picture
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
+  upsertAdmin(where: AdminWhereUniqueInput!, create: AdminCreateInput!, update: AdminUpdateInput!): Admin!
   upsertProject(where: ProjectWhereUniqueInput!, create: ProjectCreateInput!, update: ProjectUpdateInput!): Project!
-  updateManyPictures(data: PictureUpdateManyMutationInput!, where: PictureWhereInput): BatchPayload!
-  updateManyLocations(data: LocationUpdateManyMutationInput!, where: LocationWhereInput): BatchPayload!
+  upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
+  upsertNeighbourhood(where: NeighbourhoodWhereUniqueInput!, create: NeighbourhoodCreateInput!, update: NeighbourhoodUpdateInput!): Neighbourhood!
+  upsertCity(where: CityWhereUniqueInput!, create: CityCreateInput!, update: CityUpdateInput!): City!
+  upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
+  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
+  updateManyAdmins(data: AdminUpdateManyMutationInput!, where: AdminWhereInput): BatchPayload!
   updateManyProjects(data: ProjectUpdateManyMutationInput!, where: ProjectWhereInput): BatchPayload!
-  deleteManyPictures(where: PictureWhereInput): BatchPayload!
-  deleteManyLocations(where: LocationWhereInput): BatchPayload!
+  updateManyLocations(data: LocationUpdateManyMutationInput!, where: LocationWhereInput): BatchPayload!
+  updateManyNeighbourhoods(data: NeighbourhoodUpdateManyMutationInput!, where: NeighbourhoodWhereInput): BatchPayload!
+  updateManyCities(data: CityUpdateManyMutationInput!, where: CityWhereInput): BatchPayload!
+  updateManyPictures(data: PictureUpdateManyMutationInput!, where: PictureWhereInput): BatchPayload!
+  updateManyCategories(data: CategoryUpdateManyMutationInput!, where: CategoryWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyCategories(where: CategoryWhereInput): BatchPayload!
+  deleteManyAdmins(where: AdminWhereInput): BatchPayload!
   deleteManyProjects(where: ProjectWhereInput): BatchPayload!
+  deleteManyLocations(where: LocationWhereInput): BatchPayload!
+  deleteManyNeighbourhoods(where: NeighbourhoodWhereInput): BatchPayload!
+  deleteManyCities(where: CityWhereInput): BatchPayload!
+  deleteManyPictures(where: PictureWhereInput): BatchPayload!
+  deleteManyCategories(where: CategoryWhereInput): BatchPayload!
 }
 
 enum MutationType {
   CREATED
   UPDATED
   DELETED
+}
+
+type Neighbourhood implements Node {
+  id: ID!
+  locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location!]
+  name: String!
+  slug: String!
+  homePreview: Picture
+  city: City!
+  featured: Boolean!
+  popularity: Int!
+}
+
+"""A connection to a list of items."""
+type NeighbourhoodConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [NeighbourhoodEdge]!
+  aggregate: AggregateNeighbourhood!
+}
+
+input NeighbourhoodCreateInput {
+  id: ID
+  name: String!
+  slug: String!
+  featured: Boolean!
+  popularity: Int!
+  locations: LocationCreateManyWithoutNeighbourHoodInput
+  homePreview: PictureCreateOneInput
+  city: CityCreateOneWithoutNeighbourhoodsInput!
+}
+
+input NeighbourhoodCreateManyWithoutCityInput {
+  create: [NeighbourhoodCreateWithoutCityInput!]
+  connect: [NeighbourhoodWhereUniqueInput!]
+}
+
+input NeighbourhoodCreateOneWithoutLocationsInput {
+  create: NeighbourhoodCreateWithoutLocationsInput
+  connect: NeighbourhoodWhereUniqueInput
+}
+
+input NeighbourhoodCreateWithoutCityInput {
+  id: ID
+  name: String!
+  slug: String!
+  featured: Boolean!
+  popularity: Int!
+  locations: LocationCreateManyWithoutNeighbourHoodInput
+  homePreview: PictureCreateOneInput
+}
+
+input NeighbourhoodCreateWithoutLocationsInput {
+  id: ID
+  name: String!
+  slug: String!
+  featured: Boolean!
+  popularity: Int!
+  homePreview: PictureCreateOneInput
+  city: CityCreateOneWithoutNeighbourhoodsInput!
+}
+
+"""An edge in a connection."""
+type NeighbourhoodEdge {
+  """The item at the end of the edge."""
+  node: Neighbourhood!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum NeighbourhoodOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+  featured_ASC
+  featured_DESC
+  popularity_ASC
+  popularity_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type NeighbourhoodPreviousValues {
+  id: ID!
+  name: String!
+  slug: String!
+  featured: Boolean!
+  popularity: Int!
+}
+
+input NeighbourhoodScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [NeighbourhoodScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [NeighbourhoodScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [NeighbourhoodScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values less than the given value."""
+  slug_lt: String
+
+  """All values less than or equal the given value."""
+  slug_lte: String
+
+  """All values greater than the given value."""
+  slug_gt: String
+
+  """All values greater than or equal the given value."""
+  slug_gte: String
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string."""
+  slug_not_ends_with: String
+  featured: Boolean
+
+  """All values that are not equal to given value."""
+  featured_not: Boolean
+  popularity: Int
+
+  """All values that are not equal to given value."""
+  popularity_not: Int
+
+  """All values that are contained in given list."""
+  popularity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  popularity_not_in: [Int!]
+
+  """All values less than the given value."""
+  popularity_lt: Int
+
+  """All values less than or equal the given value."""
+  popularity_lte: Int
+
+  """All values greater than the given value."""
+  popularity_gt: Int
+
+  """All values greater than or equal the given value."""
+  popularity_gte: Int
+}
+
+type NeighbourhoodSubscriptionPayload {
+  mutation: MutationType!
+  node: Neighbourhood
+  updatedFields: [String!]
+  previousValues: NeighbourhoodPreviousValues
+}
+
+input NeighbourhoodSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [NeighbourhoodSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [NeighbourhoodSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [NeighbourhoodSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: NeighbourhoodWhereInput
+}
+
+input NeighbourhoodUpdateInput {
+  name: String
+  slug: String
+  featured: Boolean
+  popularity: Int
+  locations: LocationUpdateManyWithoutNeighbourHoodInput
+  homePreview: PictureUpdateOneInput
+  city: CityUpdateOneRequiredWithoutNeighbourhoodsInput
+}
+
+input NeighbourhoodUpdateManyDataInput {
+  name: String
+  slug: String
+  featured: Boolean
+  popularity: Int
+}
+
+input NeighbourhoodUpdateManyMutationInput {
+  name: String
+  slug: String
+  featured: Boolean
+  popularity: Int
+}
+
+input NeighbourhoodUpdateManyWithoutCityInput {
+  create: [NeighbourhoodCreateWithoutCityInput!]
+  connect: [NeighbourhoodWhereUniqueInput!]
+  set: [NeighbourhoodWhereUniqueInput!]
+  disconnect: [NeighbourhoodWhereUniqueInput!]
+  delete: [NeighbourhoodWhereUniqueInput!]
+  update: [NeighbourhoodUpdateWithWhereUniqueWithoutCityInput!]
+  updateMany: [NeighbourhoodUpdateManyWithWhereNestedInput!]
+  deleteMany: [NeighbourhoodScalarWhereInput!]
+  upsert: [NeighbourhoodUpsertWithWhereUniqueWithoutCityInput!]
+}
+
+input NeighbourhoodUpdateManyWithWhereNestedInput {
+  where: NeighbourhoodScalarWhereInput!
+  data: NeighbourhoodUpdateManyDataInput!
+}
+
+input NeighbourhoodUpdateOneWithoutLocationsInput {
+  create: NeighbourhoodCreateWithoutLocationsInput
+  connect: NeighbourhoodWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: NeighbourhoodUpdateWithoutLocationsDataInput
+  upsert: NeighbourhoodUpsertWithoutLocationsInput
+}
+
+input NeighbourhoodUpdateWithoutCityDataInput {
+  name: String
+  slug: String
+  featured: Boolean
+  popularity: Int
+  locations: LocationUpdateManyWithoutNeighbourHoodInput
+  homePreview: PictureUpdateOneInput
+}
+
+input NeighbourhoodUpdateWithoutLocationsDataInput {
+  name: String
+  slug: String
+  featured: Boolean
+  popularity: Int
+  homePreview: PictureUpdateOneInput
+  city: CityUpdateOneRequiredWithoutNeighbourhoodsInput
+}
+
+input NeighbourhoodUpdateWithWhereUniqueWithoutCityInput {
+  where: NeighbourhoodWhereUniqueInput!
+  data: NeighbourhoodUpdateWithoutCityDataInput!
+}
+
+input NeighbourhoodUpsertWithoutLocationsInput {
+  update: NeighbourhoodUpdateWithoutLocationsDataInput!
+  create: NeighbourhoodCreateWithoutLocationsInput!
+}
+
+input NeighbourhoodUpsertWithWhereUniqueWithoutCityInput {
+  where: NeighbourhoodWhereUniqueInput!
+  update: NeighbourhoodUpdateWithoutCityDataInput!
+  create: NeighbourhoodCreateWithoutCityInput!
+}
+
+input NeighbourhoodWhereInput {
+  """Logical AND on all given filters."""
+  AND: [NeighbourhoodWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [NeighbourhoodWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [NeighbourhoodWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values less than the given value."""
+  slug_lt: String
+
+  """All values less than or equal the given value."""
+  slug_lte: String
+
+  """All values greater than the given value."""
+  slug_gt: String
+
+  """All values greater than or equal the given value."""
+  slug_gte: String
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string."""
+  slug_not_ends_with: String
+  featured: Boolean
+
+  """All values that are not equal to given value."""
+  featured_not: Boolean
+  popularity: Int
+
+  """All values that are not equal to given value."""
+  popularity_not: Int
+
+  """All values that are contained in given list."""
+  popularity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  popularity_not_in: [Int!]
+
+  """All values less than the given value."""
+  popularity_lt: Int
+
+  """All values less than or equal the given value."""
+  popularity_lte: Int
+
+  """All values greater than the given value."""
+  popularity_gt: Int
+
+  """All values greater than or equal the given value."""
+  popularity_gte: Int
+  locations_every: LocationWhereInput
+  locations_some: LocationWhereInput
+  locations_none: LocationWhereInput
+  homePreview: PictureWhereInput
+  city: CityWhereInput
+}
+
+input NeighbourhoodWhereUniqueInput {
+  id: ID
 }
 
 """An object with an ID"""
@@ -822,6 +2356,11 @@ input PictureCreateInput {
   id: ID
   url: String!
   label: String!
+}
+
+input PictureCreateOneInput {
+  create: PictureCreateInput
+  connect: PictureWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -891,6 +2430,11 @@ input PictureSubscriptionWhereInput {
   node: PictureWhereInput
 }
 
+input PictureUpdateDataInput {
+  url: String
+  label: String
+}
+
 input PictureUpdateInput {
   url: String
   label: String
@@ -899,6 +2443,20 @@ input PictureUpdateInput {
 input PictureUpdateManyMutationInput {
   url: String
   label: String
+}
+
+input PictureUpdateOneInput {
+  create: PictureCreateInput
+  connect: PictureWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: PictureUpdateDataInput
+  upsert: PictureUpsertNestedInput
+}
+
+input PictureUpsertNestedInput {
+  update: PictureUpdateDataInput!
+  create: PictureCreateInput!
 }
 
 input PictureWhereInput {
@@ -1042,11 +2600,14 @@ type Project implements Node {
   shortDescription: String!
   description: String!
   slug: String!
-  thumbnail: String
   cover: String
+  thumbnail: String
+  featured: Boolean!
+  featuredSpread: String
   amount: Float!
   category: Category!
   owner: User!
+  location: Location
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1067,16 +2628,54 @@ input ProjectCreateInput {
   shortDescription: String!
   description: String!
   slug: String!
-  thumbnail: String
   cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
   amount: Float!
   category: CategoryCreateOneInput!
-  owner: UserCreateOneInput!
+  owner: UserCreateOneWithoutOwnedProjectsInput!
+  location: LocationCreateOneWithoutProjectInput
 }
 
-input ProjectCreateOneInput {
-  create: ProjectCreateInput
+input ProjectCreateManyWithoutOwnerInput {
+  create: [ProjectCreateWithoutOwnerInput!]
+  connect: [ProjectWhereUniqueInput!]
+}
+
+input ProjectCreateOneWithoutLocationInput {
+  create: ProjectCreateWithoutLocationInput
   connect: ProjectWhereUniqueInput
+}
+
+input ProjectCreateWithoutLocationInput {
+  id: ID
+  title: String!
+  shortDescription: String!
+  description: String!
+  slug: String!
+  cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
+  amount: Float!
+  category: CategoryCreateOneInput!
+  owner: UserCreateOneWithoutOwnedProjectsInput!
+}
+
+input ProjectCreateWithoutOwnerInput {
+  id: ID
+  title: String!
+  shortDescription: String!
+  description: String!
+  slug: String!
+  cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
+  amount: Float!
+  category: CategoryCreateOneInput!
+  location: LocationCreateOneWithoutProjectInput
 }
 
 """An edge in a connection."""
@@ -1099,10 +2698,14 @@ enum ProjectOrderByInput {
   description_DESC
   slug_ASC
   slug_DESC
-  thumbnail_ASC
-  thumbnail_DESC
   cover_ASC
   cover_DESC
+  thumbnail_ASC
+  thumbnail_DESC
+  featured_ASC
+  featured_DESC
+  featuredSpread_ASC
+  featuredSpread_DESC
   amount_ASC
   amount_DESC
   createdAt_ASC
@@ -1117,11 +2720,414 @@ type ProjectPreviousValues {
   shortDescription: String!
   description: String!
   slug: String!
-  thumbnail: String
   cover: String
+  thumbnail: String
+  featured: Boolean!
+  featuredSpread: String
   amount: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+input ProjectScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProjectScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProjectScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProjectScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  shortDescription: String
+
+  """All values that are not equal to given value."""
+  shortDescription_not: String
+
+  """All values that are contained in given list."""
+  shortDescription_in: [String!]
+
+  """All values that are not contained in given list."""
+  shortDescription_not_in: [String!]
+
+  """All values less than the given value."""
+  shortDescription_lt: String
+
+  """All values less than or equal the given value."""
+  shortDescription_lte: String
+
+  """All values greater than the given value."""
+  shortDescription_gt: String
+
+  """All values greater than or equal the given value."""
+  shortDescription_gte: String
+
+  """All values containing the given string."""
+  shortDescription_contains: String
+
+  """All values not containing the given string."""
+  shortDescription_not_contains: String
+
+  """All values starting with the given string."""
+  shortDescription_starts_with: String
+
+  """All values not starting with the given string."""
+  shortDescription_not_starts_with: String
+
+  """All values ending with the given string."""
+  shortDescription_ends_with: String
+
+  """All values not ending with the given string."""
+  shortDescription_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values less than the given value."""
+  slug_lt: String
+
+  """All values less than or equal the given value."""
+  slug_lte: String
+
+  """All values greater than the given value."""
+  slug_gt: String
+
+  """All values greater than or equal the given value."""
+  slug_gte: String
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string."""
+  slug_not_ends_with: String
+  cover: String
+
+  """All values that are not equal to given value."""
+  cover_not: String
+
+  """All values that are contained in given list."""
+  cover_in: [String!]
+
+  """All values that are not contained in given list."""
+  cover_not_in: [String!]
+
+  """All values less than the given value."""
+  cover_lt: String
+
+  """All values less than or equal the given value."""
+  cover_lte: String
+
+  """All values greater than the given value."""
+  cover_gt: String
+
+  """All values greater than or equal the given value."""
+  cover_gte: String
+
+  """All values containing the given string."""
+  cover_contains: String
+
+  """All values not containing the given string."""
+  cover_not_contains: String
+
+  """All values starting with the given string."""
+  cover_starts_with: String
+
+  """All values not starting with the given string."""
+  cover_not_starts_with: String
+
+  """All values ending with the given string."""
+  cover_ends_with: String
+
+  """All values not ending with the given string."""
+  cover_not_ends_with: String
+  thumbnail: String
+
+  """All values that are not equal to given value."""
+  thumbnail_not: String
+
+  """All values that are contained in given list."""
+  thumbnail_in: [String!]
+
+  """All values that are not contained in given list."""
+  thumbnail_not_in: [String!]
+
+  """All values less than the given value."""
+  thumbnail_lt: String
+
+  """All values less than or equal the given value."""
+  thumbnail_lte: String
+
+  """All values greater than the given value."""
+  thumbnail_gt: String
+
+  """All values greater than or equal the given value."""
+  thumbnail_gte: String
+
+  """All values containing the given string."""
+  thumbnail_contains: String
+
+  """All values not containing the given string."""
+  thumbnail_not_contains: String
+
+  """All values starting with the given string."""
+  thumbnail_starts_with: String
+
+  """All values not starting with the given string."""
+  thumbnail_not_starts_with: String
+
+  """All values ending with the given string."""
+  thumbnail_ends_with: String
+
+  """All values not ending with the given string."""
+  thumbnail_not_ends_with: String
+  featured: Boolean
+
+  """All values that are not equal to given value."""
+  featured_not: Boolean
+  featuredSpread: String
+
+  """All values that are not equal to given value."""
+  featuredSpread_not: String
+
+  """All values that are contained in given list."""
+  featuredSpread_in: [String!]
+
+  """All values that are not contained in given list."""
+  featuredSpread_not_in: [String!]
+
+  """All values less than the given value."""
+  featuredSpread_lt: String
+
+  """All values less than or equal the given value."""
+  featuredSpread_lte: String
+
+  """All values greater than the given value."""
+  featuredSpread_gt: String
+
+  """All values greater than or equal the given value."""
+  featuredSpread_gte: String
+
+  """All values containing the given string."""
+  featuredSpread_contains: String
+
+  """All values not containing the given string."""
+  featuredSpread_not_contains: String
+
+  """All values starting with the given string."""
+  featuredSpread_starts_with: String
+
+  """All values not starting with the given string."""
+  featuredSpread_not_starts_with: String
+
+  """All values ending with the given string."""
+  featuredSpread_ends_with: String
+
+  """All values not ending with the given string."""
+  featuredSpread_not_ends_with: String
+  amount: Float
+
+  """All values that are not equal to given value."""
+  amount_not: Float
+
+  """All values that are contained in given list."""
+  amount_in: [Float!]
+
+  """All values that are not contained in given list."""
+  amount_not_in: [Float!]
+
+  """All values less than the given value."""
+  amount_lt: Float
+
+  """All values less than or equal the given value."""
+  amount_lte: Float
+
+  """All values greater than the given value."""
+  amount_gt: Float
+
+  """All values greater than or equal the given value."""
+  amount_gte: Float
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type ProjectSubscriptionPayload {
@@ -1163,28 +3169,31 @@ input ProjectSubscriptionWhereInput {
   node: ProjectWhereInput
 }
 
-input ProjectUpdateDataInput {
-  title: String
-  shortDescription: String
-  description: String
-  slug: String
-  thumbnail: String
-  cover: String
-  amount: Float
-  category: CategoryUpdateOneRequiredInput
-  owner: UserUpdateOneRequiredInput
-}
-
 input ProjectUpdateInput {
   title: String
   shortDescription: String
   description: String
   slug: String
-  thumbnail: String
   cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
   amount: Float
   category: CategoryUpdateOneRequiredInput
-  owner: UserUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredWithoutOwnedProjectsInput
+  location: LocationUpdateOneWithoutProjectInput
+}
+
+input ProjectUpdateManyDataInput {
+  title: String
+  shortDescription: String
+  description: String
+  slug: String
+  cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
+  amount: Float
 }
 
 input ProjectUpdateManyMutationInput {
@@ -1192,23 +3201,81 @@ input ProjectUpdateManyMutationInput {
   shortDescription: String
   description: String
   slug: String
-  thumbnail: String
   cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
   amount: Float
 }
 
-input ProjectUpdateOneInput {
-  create: ProjectCreateInput
+input ProjectUpdateManyWithoutOwnerInput {
+  create: [ProjectCreateWithoutOwnerInput!]
+  connect: [ProjectWhereUniqueInput!]
+  set: [ProjectWhereUniqueInput!]
+  disconnect: [ProjectWhereUniqueInput!]
+  delete: [ProjectWhereUniqueInput!]
+  update: [ProjectUpdateWithWhereUniqueWithoutOwnerInput!]
+  updateMany: [ProjectUpdateManyWithWhereNestedInput!]
+  deleteMany: [ProjectScalarWhereInput!]
+  upsert: [ProjectUpsertWithWhereUniqueWithoutOwnerInput!]
+}
+
+input ProjectUpdateManyWithWhereNestedInput {
+  where: ProjectScalarWhereInput!
+  data: ProjectUpdateManyDataInput!
+}
+
+input ProjectUpdateOneWithoutLocationInput {
+  create: ProjectCreateWithoutLocationInput
   connect: ProjectWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
-  update: ProjectUpdateDataInput
-  upsert: ProjectUpsertNestedInput
+  update: ProjectUpdateWithoutLocationDataInput
+  upsert: ProjectUpsertWithoutLocationInput
 }
 
-input ProjectUpsertNestedInput {
-  update: ProjectUpdateDataInput!
-  create: ProjectCreateInput!
+input ProjectUpdateWithoutLocationDataInput {
+  title: String
+  shortDescription: String
+  description: String
+  slug: String
+  cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
+  amount: Float
+  category: CategoryUpdateOneRequiredInput
+  owner: UserUpdateOneRequiredWithoutOwnedProjectsInput
+}
+
+input ProjectUpdateWithoutOwnerDataInput {
+  title: String
+  shortDescription: String
+  description: String
+  slug: String
+  cover: String
+  thumbnail: String
+  featured: Boolean
+  featuredSpread: String
+  amount: Float
+  category: CategoryUpdateOneRequiredInput
+  location: LocationUpdateOneWithoutProjectInput
+}
+
+input ProjectUpdateWithWhereUniqueWithoutOwnerInput {
+  where: ProjectWhereUniqueInput!
+  data: ProjectUpdateWithoutOwnerDataInput!
+}
+
+input ProjectUpsertWithoutLocationInput {
+  update: ProjectUpdateWithoutLocationDataInput!
+  create: ProjectCreateWithoutLocationInput!
+}
+
+input ProjectUpsertWithWhereUniqueWithoutOwnerInput {
+  where: ProjectWhereUniqueInput!
+  update: ProjectUpdateWithoutOwnerDataInput!
+  create: ProjectCreateWithoutOwnerInput!
 }
 
 input ProjectWhereInput {
@@ -1420,46 +3487,6 @@ input ProjectWhereInput {
 
   """All values not ending with the given string."""
   slug_not_ends_with: String
-  thumbnail: String
-
-  """All values that are not equal to given value."""
-  thumbnail_not: String
-
-  """All values that are contained in given list."""
-  thumbnail_in: [String!]
-
-  """All values that are not contained in given list."""
-  thumbnail_not_in: [String!]
-
-  """All values less than the given value."""
-  thumbnail_lt: String
-
-  """All values less than or equal the given value."""
-  thumbnail_lte: String
-
-  """All values greater than the given value."""
-  thumbnail_gt: String
-
-  """All values greater than or equal the given value."""
-  thumbnail_gte: String
-
-  """All values containing the given string."""
-  thumbnail_contains: String
-
-  """All values not containing the given string."""
-  thumbnail_not_contains: String
-
-  """All values starting with the given string."""
-  thumbnail_starts_with: String
-
-  """All values not starting with the given string."""
-  thumbnail_not_starts_with: String
-
-  """All values ending with the given string."""
-  thumbnail_ends_with: String
-
-  """All values not ending with the given string."""
-  thumbnail_not_ends_with: String
   cover: String
 
   """All values that are not equal to given value."""
@@ -1500,6 +3527,90 @@ input ProjectWhereInput {
 
   """All values not ending with the given string."""
   cover_not_ends_with: String
+  thumbnail: String
+
+  """All values that are not equal to given value."""
+  thumbnail_not: String
+
+  """All values that are contained in given list."""
+  thumbnail_in: [String!]
+
+  """All values that are not contained in given list."""
+  thumbnail_not_in: [String!]
+
+  """All values less than the given value."""
+  thumbnail_lt: String
+
+  """All values less than or equal the given value."""
+  thumbnail_lte: String
+
+  """All values greater than the given value."""
+  thumbnail_gt: String
+
+  """All values greater than or equal the given value."""
+  thumbnail_gte: String
+
+  """All values containing the given string."""
+  thumbnail_contains: String
+
+  """All values not containing the given string."""
+  thumbnail_not_contains: String
+
+  """All values starting with the given string."""
+  thumbnail_starts_with: String
+
+  """All values not starting with the given string."""
+  thumbnail_not_starts_with: String
+
+  """All values ending with the given string."""
+  thumbnail_ends_with: String
+
+  """All values not ending with the given string."""
+  thumbnail_not_ends_with: String
+  featured: Boolean
+
+  """All values that are not equal to given value."""
+  featured_not: Boolean
+  featuredSpread: String
+
+  """All values that are not equal to given value."""
+  featuredSpread_not: String
+
+  """All values that are contained in given list."""
+  featuredSpread_in: [String!]
+
+  """All values that are not contained in given list."""
+  featuredSpread_not_in: [String!]
+
+  """All values less than the given value."""
+  featuredSpread_lt: String
+
+  """All values less than or equal the given value."""
+  featuredSpread_lte: String
+
+  """All values greater than the given value."""
+  featuredSpread_gt: String
+
+  """All values greater than or equal the given value."""
+  featuredSpread_gte: String
+
+  """All values containing the given string."""
+  featuredSpread_contains: String
+
+  """All values not containing the given string."""
+  featuredSpread_not_contains: String
+
+  """All values starting with the given string."""
+  featuredSpread_starts_with: String
+
+  """All values not starting with the given string."""
+  featuredSpread_not_starts_with: String
+
+  """All values ending with the given string."""
+  featuredSpread_ends_with: String
+
+  """All values not ending with the given string."""
+  featuredSpread_not_ends_with: String
   amount: Float
 
   """All values that are not equal to given value."""
@@ -1568,6 +3679,7 @@ input ProjectWhereInput {
   updatedAt_gte: DateTime
   category: CategoryWhereInput
   owner: UserWhereInput
+  location: LocationWhereInput
 }
 
 input ProjectWhereUniqueInput {
@@ -1576,21 +3688,30 @@ input ProjectWhereUniqueInput {
 }
 
 type Query {
-  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture]!
-  locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
+  admins(where: AdminWhereInput, orderBy: AdminOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Admin]!
   projects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Project]!
-  picture(where: PictureWhereUniqueInput!): Picture
-  location(where: LocationWhereUniqueInput!): Location
+  locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
+  neighbourhoods(where: NeighbourhoodWhereInput, orderBy: NeighbourhoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Neighbourhood]!
+  cities(where: CityWhereInput, orderBy: CityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [City]!
+  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture]!
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
   user(where: UserWhereUniqueInput!): User
-  category(where: CategoryWhereUniqueInput!): Category
+  admin(where: AdminWhereUniqueInput!): Admin
   project(where: ProjectWhereUniqueInput!): Project
-  picturesConnection(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PictureConnection!
-  locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
+  location(where: LocationWhereUniqueInput!): Location
+  neighbourhood(where: NeighbourhoodWhereUniqueInput!): Neighbourhood
+  city(where: CityWhereUniqueInput!): City
+  picture(where: PictureWhereUniqueInput!): Picture
+  category(where: CategoryWhereUniqueInput!): Category
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
+  adminsConnection(where: AdminWhereInput, orderBy: AdminOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AdminConnection!
   projectsConnection(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectConnection!
+  locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
+  neighbourhoodsConnection(where: NeighbourhoodWhereInput, orderBy: NeighbourhoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NeighbourhoodConnection!
+  citiesConnection(where: CityWhereInput, orderBy: CityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CityConnection!
+  picturesConnection(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PictureConnection!
+  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -1600,11 +3721,19 @@ type Query {
 }
 
 type Subscription {
-  picture(where: PictureSubscriptionWhereInput): PictureSubscriptionPayload
-  location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
+  admin(where: AdminSubscriptionWhereInput): AdminSubscriptionPayload
   project(where: ProjectSubscriptionWhereInput): ProjectSubscriptionPayload
+  location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
+  neighbourhood(where: NeighbourhoodSubscriptionWhereInput): NeighbourhoodSubscriptionPayload
+  city(where: CitySubscriptionWhereInput): CitySubscriptionPayload
+  picture(where: PictureSubscriptionWhereInput): PictureSubscriptionPayload
+  category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
+}
+
+enum Type {
+  PROMOTER
+  SUPPORTER
 }
 
 type User implements Node {
@@ -1616,10 +3745,13 @@ type User implements Node {
   password: String!
   phone: String!
   isVerified: Boolean!
-  isPromoter: Boolean!
+  type: Type!
+  ownedProjects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Project!]
+  location: Location
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
+  profilePicture: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1643,19 +3775,61 @@ input UserCreateInput {
   password: String!
   phone: String!
   isVerified: Boolean
-  isPromoter: Boolean
+  type: Type
   resetToken: String
   resetTokenExpiry: Float
+  profilePicture: String
   permissions: UserCreatepermissionsInput
+  ownedProjects: ProjectCreateManyWithoutOwnerInput
+  location: LocationCreateOneWithoutUserInput
 }
 
-input UserCreateOneInput {
-  create: UserCreateInput
+input UserCreateOneWithoutLocationInput {
+  create: UserCreateWithoutLocationInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutOwnedProjectsInput {
+  create: UserCreateWithoutOwnedProjectsInput
   connect: UserWhereUniqueInput
 }
 
 input UserCreatepermissionsInput {
   set: [Permission!]
+}
+
+input UserCreateWithoutLocationInput {
+  id: ID
+  firstName: String!
+  lastName: String!
+  displayName: String!
+  email: String!
+  password: String!
+  phone: String!
+  isVerified: Boolean
+  type: Type
+  resetToken: String
+  resetTokenExpiry: Float
+  profilePicture: String
+  permissions: UserCreatepermissionsInput
+  ownedProjects: ProjectCreateManyWithoutOwnerInput
+}
+
+input UserCreateWithoutOwnedProjectsInput {
+  id: ID
+  firstName: String!
+  lastName: String!
+  displayName: String!
+  email: String!
+  password: String!
+  phone: String!
+  isVerified: Boolean
+  type: Type
+  resetToken: String
+  resetTokenExpiry: Float
+  profilePicture: String
+  permissions: UserCreatepermissionsInput
+  location: LocationCreateOneWithoutUserInput
 }
 
 """An edge in a connection."""
@@ -1684,12 +3858,14 @@ enum UserOrderByInput {
   phone_DESC
   isVerified_ASC
   isVerified_DESC
-  isPromoter_ASC
-  isPromoter_DESC
+  type_ASC
+  type_DESC
   resetToken_ASC
   resetToken_DESC
   resetTokenExpiry_ASC
   resetTokenExpiry_DESC
+  profilePicture_ASC
+  profilePicture_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1705,10 +3881,11 @@ type UserPreviousValues {
   password: String!
   phone: String!
   isVerified: Boolean!
-  isPromoter: Boolean!
+  type: Type!
   resetToken: String
   resetTokenExpiry: Float
   permissions: [Permission!]!
+  profilePicture: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1752,20 +3929,6 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
-input UserUpdateDataInput {
-  firstName: String
-  lastName: String
-  displayName: String
-  email: String
-  password: String
-  phone: String
-  isVerified: Boolean
-  isPromoter: Boolean
-  resetToken: String
-  resetTokenExpiry: Float
-  permissions: UserUpdatepermissionsInput
-}
-
 input UserUpdateInput {
   firstName: String
   lastName: String
@@ -1774,10 +3937,13 @@ input UserUpdateInput {
   password: String
   phone: String
   isVerified: Boolean
-  isPromoter: Boolean
+  type: Type
   resetToken: String
   resetTokenExpiry: Float
+  profilePicture: String
   permissions: UserUpdatepermissionsInput
+  ownedProjects: ProjectUpdateManyWithoutOwnerInput
+  location: LocationUpdateOneWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
@@ -1788,26 +3954,73 @@ input UserUpdateManyMutationInput {
   password: String
   phone: String
   isVerified: Boolean
-  isPromoter: Boolean
+  type: Type
   resetToken: String
   resetTokenExpiry: Float
+  profilePicture: String
   permissions: UserUpdatepermissionsInput
 }
 
-input UserUpdateOneRequiredInput {
-  create: UserCreateInput
+input UserUpdateOneRequiredWithoutOwnedProjectsInput {
+  create: UserCreateWithoutOwnedProjectsInput
   connect: UserWhereUniqueInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
+  update: UserUpdateWithoutOwnedProjectsDataInput
+  upsert: UserUpsertWithoutOwnedProjectsInput
+}
+
+input UserUpdateOneWithoutLocationInput {
+  create: UserCreateWithoutLocationInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutLocationDataInput
+  upsert: UserUpsertWithoutLocationInput
 }
 
 input UserUpdatepermissionsInput {
   set: [Permission!]
 }
 
-input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
-  create: UserCreateInput!
+input UserUpdateWithoutLocationDataInput {
+  firstName: String
+  lastName: String
+  displayName: String
+  email: String
+  password: String
+  phone: String
+  isVerified: Boolean
+  type: Type
+  resetToken: String
+  resetTokenExpiry: Float
+  profilePicture: String
+  permissions: UserUpdatepermissionsInput
+  ownedProjects: ProjectUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithoutOwnedProjectsDataInput {
+  firstName: String
+  lastName: String
+  displayName: String
+  email: String
+  password: String
+  phone: String
+  isVerified: Boolean
+  type: Type
+  resetToken: String
+  resetTokenExpiry: Float
+  profilePicture: String
+  permissions: UserUpdatepermissionsInput
+  location: LocationUpdateOneWithoutUserInput
+}
+
+input UserUpsertWithoutLocationInput {
+  update: UserUpdateWithoutLocationDataInput!
+  create: UserCreateWithoutLocationInput!
+}
+
+input UserUpsertWithoutOwnedProjectsInput {
+  update: UserUpdateWithoutOwnedProjectsDataInput!
+  create: UserCreateWithoutOwnedProjectsInput!
 }
 
 input UserWhereInput {
@@ -2103,10 +4316,16 @@ input UserWhereInput {
 
   """All values that are not equal to given value."""
   isVerified_not: Boolean
-  isPromoter: Boolean
+  type: Type
 
   """All values that are not equal to given value."""
-  isPromoter_not: Boolean
+  type_not: Type
+
+  """All values that are contained in given list."""
+  type_in: [Type!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [Type!]
   resetToken: String
 
   """All values that are not equal to given value."""
@@ -2169,6 +4388,46 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   resetTokenExpiry_gte: Float
+  profilePicture: String
+
+  """All values that are not equal to given value."""
+  profilePicture_not: String
+
+  """All values that are contained in given list."""
+  profilePicture_in: [String!]
+
+  """All values that are not contained in given list."""
+  profilePicture_not_in: [String!]
+
+  """All values less than the given value."""
+  profilePicture_lt: String
+
+  """All values less than or equal the given value."""
+  profilePicture_lte: String
+
+  """All values greater than the given value."""
+  profilePicture_gt: String
+
+  """All values greater than or equal the given value."""
+  profilePicture_gte: String
+
+  """All values containing the given string."""
+  profilePicture_contains: String
+
+  """All values not containing the given string."""
+  profilePicture_not_contains: String
+
+  """All values starting with the given string."""
+  profilePicture_starts_with: String
+
+  """All values not starting with the given string."""
+  profilePicture_not_starts_with: String
+
+  """All values ending with the given string."""
+  profilePicture_ends_with: String
+
+  """All values not ending with the given string."""
+  profilePicture_not_ends_with: String
   createdAt: DateTime
 
   """All values that are not equal to given value."""
@@ -2213,6 +4472,10 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  ownedProjects_every: ProjectWhereInput
+  ownedProjects_some: ProjectWhereInput
+  ownedProjects_none: ProjectWhereInput
+  location: LocationWhereInput
 }
 
 input UserWhereUniqueInput {
